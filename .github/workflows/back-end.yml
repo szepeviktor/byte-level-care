@@ -102,6 +102,7 @@ jobs:
             uses: "ramsey/composer-install@v2"
             #env:
             #    COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+            #    # yamllint disable-line rule:line-length
             #    COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{ secrets.NOVA_LICENSE_ACCOUNT }}","password":"${{ secrets.NOVA_LICENSE_KEY }}"}}}'
             with:
                 dependency-versions: "${{ matrix.dependencies }}"
@@ -124,7 +125,8 @@ jobs:
         #        COVERALLS_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         #    if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.0' && matrix.dependencies == 'highest' }}"
         #    run: |
-        #        wget --no-verbose "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
+        #        wget --no-verbose \
+        #            "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
         #        php ./php-coveralls.phar --verbose
 
     static_analysis:
@@ -148,7 +150,8 @@ jobs:
         #    name: "Check JSON files"
         #    run: |
         #        git ls-files --cached -z -- '*.json' \
-        #            | xargs -t --null -L 1 -- php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
+        #            | xargs -t --null -L 1 -- \
+        #                php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
         -
             name: "Validate Composer configuration"
             run: "composer validate --no-interaction --strict"

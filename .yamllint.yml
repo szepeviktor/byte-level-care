@@ -19,3 +19,6 @@ rules:
     quoted-strings:
         quote-type: "double"
         required: true
+    comments:
+        # Optional workflow parts
+        require-starting-space: false
