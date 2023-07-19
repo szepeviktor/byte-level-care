@@ -1,0 +1,29 @@
+{
+    "name": "company/project",
+    "type": "project",
+    "description": "A robust web application",
+    "keywords": [
+        "application"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "~8.0.28",
+        "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-redis": "*",
+        "ext-xml": "*",
+        "ext-zip": "*",
+        "composer-plugin-api": "^2.2"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Project\\": "src/"
+        }
+    }
+}

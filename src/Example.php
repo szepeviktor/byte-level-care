@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/php-package-template
  */
 
-namespace Ergebnis\Package;
+namespace Project;
 
 final class Example
 {
