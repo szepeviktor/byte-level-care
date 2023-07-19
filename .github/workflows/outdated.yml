@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Outdated packages"
+
+on:  # yamllint disable-line rule:truthy
+    schedule:
+    # Update Monday
+    - cron: "31 04 * * 1"
+    workflow_dispatch: null
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    back_end_packages:
+        name: "PHP packages"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 5
+        steps:
+        -
+            name: "Set up PHP"
+            uses: "shivammathur/setup-php@v2"
+            with:
+                php-version: "8.0"
+                coverage: "none"
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
+            name: "Install dependencies"
+            uses: "ramsey/composer-install@v2"
+            with:
+                dependency-versions: "highest"
+        -
+            name: "Show available updates"
+            run: "composer outdated --direct --strict"
+
+    front_end_packages:
+        name: "Node.js packages"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 5
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
+            name: "Set up Node.js"
+            uses: "actions/setup-node@v3"
+            with:
+                node-version: "18"
+                cache: "npm"
+        -
+            name: "Configure npm"
+            run: "npm config set engine-strict true"
+        # -
+        #     name: "Install all dependencies"
+        #     run: "npm ci"
+        # -
+        #     name: "Check for outdated packages"
+        #     run: "npm outdated"
+        -
+            name: "Install production dependencies"
+            run: "npm ci --omit=dev"
+        -
+            name: "Check for outdated production packages"
+            run: "npm outdated --omit=dev"
