@@ -50,7 +50,7 @@ jobs:
             name: "Set up PHP"
             uses: "shivammathur/setup-php@v2"
             with:
-                php-version: "8.0"
+                php-version: "8.2"
                 coverage: "none"
                 tools: "parallel-lint"
         -
@@ -78,7 +78,7 @@ jobs:
             #fail-fast: false
             matrix:
                 php-version:
-                - "8.0"
+                - "8.2"
                 dependencies:
                 - "lowest"
                 - "highest"
@@ -124,7 +124,7 @@ jobs:
         #    name: "Send coverage to Coveralls"
         #    env:
         #        COVERALLS_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        #    if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.0' && matrix.dependencies == 'highest' }}"
+        #    if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
         #    run: |
         #        wget --no-verbose \
         #            "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
@@ -142,7 +142,7 @@ jobs:
             name: "Set up PHP"
             uses: "shivammathur/setup-php@v2"
             with:
-                php-version: "8.0"
+                php-version: "8.2"
                 coverage: "none"
         -
             name: "Checkout repository"
@@ -189,7 +189,7 @@ jobs:
             name: "Set up PHP"
             uses: "shivammathur/setup-php@v2"
             with:
-                php-version: "8.0"
+                php-version: "8.2"
                 coverage: "none"
                 tools: "phpcs,cs2pr"
         -
