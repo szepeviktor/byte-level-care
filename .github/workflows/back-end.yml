@@ -102,7 +102,7 @@ jobs:
             uses: "ramsey/composer-install@v2"
             #env:
             #    COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
-            #    # yamllint disable-line rule:line-length
+            # yamllint disable-line rule:line-length
             #    COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{ secrets.NOVA_LICENSE_ACCOUNT }}","password":"${{ secrets.NOVA_LICENSE_KEY }}"}}}'
             with:
                 dependency-versions: "${{ matrix.dependencies }}"
@@ -112,6 +112,7 @@ jobs:
             #run: "composer exec -- phpunit"
             run: "composer exec -- pest --ci"
             # @TODO Functional tests
+        # yamllint disable-line rule:comments-indentation
         #-
         #    name: "Tests have failed: upload logs"
         #    if: "${{ failure() }}"
