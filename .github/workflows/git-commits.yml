@@ -34,6 +34,7 @@ jobs:
                     curl --silent --get --data-urlencode "q=type:user in:email ${AUTHOR}" "${GITHUB_API_URL}" \
                         | grep --fixed-strings --line-regexp '  "total_count": 1,'
                 }
-                git show --no-patch --pretty="format:%ae" "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}" \
+                COMMIT_RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+                git show --no-patch --pretty="format:%ae" "${COMMIT_RANGE}"  \
                     | sort --unique \
                     | while read -r AUTHOR; do Check_author "${AUTHOR}"; done
