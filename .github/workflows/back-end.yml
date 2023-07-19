@@ -112,7 +112,7 @@ jobs:
             #run: "composer exec -- phpunit"
             run: "composer exec -- pest --ci"
             # @TODO Functional tests
-        # yamllint disable-line rule:comments-indentation
+            # yamllint disable-line rule:comments-indentation
         #-
         #    name: "Tests have failed: upload logs"
         #    if: "${{ failure() }}"
