@@ -32,6 +32,10 @@ jobs:
             run: |
                 test "$(find ./ -type f -not -path './.git/*' -executable)" = ""
         -
+            name: "Check for byte order mark (BOM)"
+            run: |
+                ! git grep --perl-regexp -I -e '^\xEF\xBB\xBF'
+        -
             # https://html.spec.whatwg.org/multipage/named-characters.html
             name: "Find non-printable ASCII characters"
             run: |
