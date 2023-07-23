@@ -3,4 +3,6 @@
 /.gitignore export-ignore
 /.editorconfig export-ignore
 /.yamllint.yml export-ignore
+/phpunit.xml export-ignore
 /yarn.lock export-ignore
+/tests/ export-ignore
