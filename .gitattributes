@@ -1,4 +1,6 @@
 /.github/ export-ignore
 /.gitattributes export-ignore
+/.gitignore export-ignore
 /.editorconfig export-ignore
 /.yamllint.yml export-ignore
+/yarn.lock export-ignore
