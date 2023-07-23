@@ -263,7 +263,7 @@ jobs:
                 EXPECTED="LICENSE,README.md,composer.json,package.json"
                 CURRENT="$(
                     git archive HEAD \
-                        | tar --list --exclude="src" --exclude="src/*" \
+                        | tar --list --exclude="src" --exclude="src/*" --exclude="resources" --exclude="resources/*" \
                         | paste --serial --delimiters=","
                 )"
                 echo "CURRENT =${CURRENT}"

@@ -10,6 +10,10 @@
         "https://github.com/npm/cli/blob/latest/package.json"
     ],
     "dependencies": {
-        "acorn": "^8.10.0"
+        "acorn": "^8.10.0",
+        "eslint": "^8.45.0"
+    },
+    "scripts": {
+        "js:eslint": "npx eslint resources/js/*.js"
     }
 }
