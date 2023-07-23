@@ -17,7 +17,7 @@ block_comment_end = */
 [*.md]
 trim_trailing_whitespace = false
 
-[yarn.lock]
+[{package-lock.json,yarn.lock}]
 indent_size = unset
 max_line_length = unset
 
