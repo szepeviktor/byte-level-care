@@ -32,6 +32,7 @@ jobs:
             run: |
                 test "$(find ./ -type f -not -path './.git/*' -executable)" = ""
         -
+            # https://github.com/greut/eclint/issues/6
             name: "Check for byte order mark (BOM)"
             run: |
                 ! git grep --perl-regexp -I -e '^\xEF\xBB\xBF'
