@@ -152,12 +152,12 @@ jobs:
         -
             name: "Checkout repository"
             uses: "actions/checkout@v3"
-        #-
-        #    name: "Check JSON files"
-        #    run: |
-        #        git ls-files --cached -z -- '*.json' \
-        #            | xargs -t --null -L 1 -- \
-        #                php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
+        -
+            name: "Check JSON files"
+            run: |
+                git ls-files --cached -z -- '*.json' \
+                    | xargs -t --null -L 1 -- \
+                        php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
         -
             name: "Validate Composer configuration"
             run: "composer validate --no-interaction --strict"
@@ -176,7 +176,7 @@ jobs:
             # https://github.com/phpstan/phpstan/issues/9475
             name: "Search for $this->$this typo 🐌"
             run: |
-                ! git grep --line-number -e '\$this\s*->\s*\$this'
+                ! git grep --line-number -e '\$this\s*->\s*\$this' -- ':!:.github/workflows/back-end.yml'
         -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze --level=5 src/"
