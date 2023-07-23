@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Copyright (c) 2017-2023 Andreas Moeller
  *
@@ -10,6 +8,8 @@ declare(strict_types=1);
  *
  * @see https://github.com/ergebnis/php-package-template
  */
+
+declare(strict_types=1);
 
 namespace Project;
 
