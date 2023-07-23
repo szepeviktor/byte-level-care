@@ -2,9 +2,13 @@
     "name": "@company/project",
     "version": "1.0.0",
     "description": "A robust web application",
-    "repository": "git@github.com:szepeviktor/byte-level-care.git",
+    "repository": "https://github.com/szepeviktor/byte-level-care.git",
     "author": "Viktor Szépe <viktor@szepe.net>",
     "license": "MIT",
+    "keywords": [
+        "application",
+        "https://github.com/npm/cli/blob/latest/package.json"
+    ],
     "dependencies": {
         "acorn": "^8.10.0"
     }
