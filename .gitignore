@@ -12,6 +12,8 @@
 # IDE and local environment
 
 # Dependencies
+/composer.lock
+/vendor/
 /node_modules/
 
 # Application

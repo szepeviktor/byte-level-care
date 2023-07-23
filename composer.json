@@ -19,11 +19,17 @@
         "composer-plugin-api": "^2.2"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "pestphp/pest": "^2.9"
     },
     "autoload": {
         "psr-4": {
             "Project\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }
