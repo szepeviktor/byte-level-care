@@ -21,9 +21,9 @@ How to design and implement continuous integration.
 - Display environment information
 - Set access credentials
 - Version control
-  - Git committer
-  - Commit message
-  - PR title
+    - Git committer
+    - Commit message
+    - PR title
 - Cache OS and programming language library packages
 - Check programming language and framework version compatibility
 - Check package management configuration (validate & normalize)
@@ -31,20 +31,20 @@ How to design and implement continuous integration.
 - Build code
 - Configure application
 - :zero: Byte-level
-  - Check execute file mode bit
-  - Look for non-ASCII characters
-    (non-English alphabets, whitespace characters, control characters)
+    - Check execute file mode bit
+    - Look for non-ASCII characters
+        (non-English alphabets, whitespace characters, control characters)
 - :one: Syntax errors
-  - Check source code for syntax errors
-  - Check template files for syntax errors
+    - Check source code for syntax errors
+    - Check template files for syntax errors
 - :two: Run unit and functional tests
 - :three: Static Analysis
-  - Run static analysis: **PHPStan**
-  - Magic Number Detector
-  - Copy-Paste Detector
+    - Run static analysis: **PHPStan**
+    - Magic Number Detector
+    - Copy-Paste Detector
 - :four: Coding Standards
-  - Check coding style
-  - Adhere to EditorConfig
+    - Check coding style
+    - Adhere to EditorConfig
 - Measure code coverage
 - Check route methods (controllers of routes)
 - Check list of distributed files
@@ -59,13 +59,13 @@ How to design and implement continuous integration.
 How to design and implement continuous delivery.
 
 - Possible constrains:
-  * successful tests
-  * do not run on PR-s
-  * our repo
-  * specific branch
-  * tag in commit message `[deploy:prod]`
-  * deploy head commit only
-  * optional manual start ([GitLab manual actions](https://gitlab.com/help/ci/yaml/README.md#manual-actions))
+    - successful tests
+    - do not run on PR-s
+    - our repo
+    - specific branch
+    - tag in commit message `[deploy:prod]`
+    - deploy head commit only
+    - optional manual start ([GitLab manual actions](https://gitlab.com/help/ci/yaml/README.md#manual-actions))
 - Do not run as root user
 - Keep deploy configuration in a file
 - Log every output to a file, log start and finish to syslog
@@ -74,8 +74,8 @@ How to design and implement continuous delivery.
 - Create a bot user on the server for git access with SSH key (`@companybot`)
 - List changes in current project files
 - [Check for maintenance mode](/webserver/laravel/Commands/IsDownForMaintenance.php),
-  Turn on maintenance mode `php artisan down`
-  covering static resource, page, AJAX and API requests
+    Turn on maintenance mode `php artisan down`
+    covering static resource, page, AJAX and API requests
 - Clear caches (configuration, routes, application, template etc.)
 - Wait for to finish and disable cron jobs and background workers after clearing caches (email piped to a program)
 - Identify git repository and branch
@@ -96,8 +96,8 @@ How to design and implement continuous delivery.
 
 ## Coding standards
 
-* Tool: squizlabs/php_codesniffer # `phive install phpcs`
-* Tool: dealerdirect/phpcodesniffer-composer-installer
+- Tool: squizlabs/php_codesniffer # `phive install phpcs`
+- Tool: dealerdirect/phpcodesniffer-composer-installer
 
 - [commenting rules](https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting)
 - wp-coding-standards/wpcs
@@ -109,8 +109,8 @@ How to design and implement continuous delivery.
 
 ## Static analysis
 
-* Tool: phpstan/phpstan # `phive install phpstan`
-* Tool: dave-liddament/sarb # `phive install sarb`
+- Tool: phpstan/phpstan # `phive install phpstan`
+- Tool: dave-liddament/sarb # `phive install sarb`
 
 - ekino/phpstan-banned-code
 - phpstan/phpstan-strict-rules
