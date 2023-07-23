@@ -59,7 +59,7 @@ jobs:
         -
             name: "Search for conflict markers 🐌"
             run: |
-                ! git grep --line-number -e '^\(<<<<<<<\|=======\|>>>>>>>\||||||||\)'
+                ! git grep --line-number -e '^\(<<<<<<<\s\|=======\s\|=======$\|>>>>>>>\s\||||||||\s\)'
         -
             name: "Search for invalid complex curly syntax 🐌"
             run: |
