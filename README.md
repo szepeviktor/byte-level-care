@@ -1,5 +1,7 @@
 # Byte-level care
 
+[![theories](https://img.shields.io/badge/more-theories-purple)](https://github.com/stars/szepeviktor/lists/theory)
+
 How to live with zero problems through Total Control.
 
 -   Analyze service providers before choosing one
@@ -12,6 +14,8 @@ How to live with zero problems through Total Control.
 -   Deploy 100% automatically
 -   Run production environments without humans
 -   Be conservative with software versions
+
+See [Special infrastructure for web applications](https://github.com/szepeviktor/infrastructure-for-hosting-web-applications)
 
 ## CI
 
