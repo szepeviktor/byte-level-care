@@ -15,7 +15,7 @@ How to live with zero problems through Total Control.
 -   Run production environments without humans
 -   Be conservative with software versions
 
-See [Special infrastructure for web applications](https://github.com/szepeviktor/infrastructure-for-hosting-web-applications)
+See [Special infrastructure for web applications][href-infrastructure]
 
 ## CI
 
@@ -69,7 +69,7 @@ How to design and implement continuous delivery.
     - specific branch
     - tag in commit message `[deploy:prod]`
     - deploy head commit only
-    - optional manual start ([GitLab manual actions](https://gitlab.com/help/ci/yaml/README.md#manual-actions))
+    - optional manual start ([GitLab manual actions][href-gitlab-manual-actions])
 - Do not run as root user
 - Keep deploy configuration in a file
 - Log every output to a file, log start and finish to syslog
@@ -103,7 +103,7 @@ How to design and implement continuous delivery.
 - Tool: squizlabs/php_codesniffer # `phive install phpcs`
 - Tool: dealerdirect/phpcodesniffer-composer-installer
 
-- [commenting rules](https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting)
+- [commenting rules][href-phpcs-commenting]
 - wp-coding-standards/wpcs
 - automattic/phpcs-neutron-standard , automattic/phpcs-neutron-ruleset
 - slevomat/coding-standard
@@ -124,3 +124,7 @@ How to design and implement continuous delivery.
 - pepakriz/phpstan-exception-rules
 - nunomaduro/larastan
 - szepeviktor/phpstan-wordpress
+
+[href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
+[href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
+[href-phpcs-commenting]: https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting
