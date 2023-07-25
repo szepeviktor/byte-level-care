@@ -17,6 +17,14 @@ How to live with zero problems through Total Control.
 
 See [Special infrastructure for web applications][href-infrastructure]
 
+## Support my work
+
+Please consider supporting my work if you benefit from this knowledge.
+
+[![Sponsor][src-github-like-sponsor-button]](https://github.com/sponsors/szepeviktor)
+
+Thank you!
+
 ## CI
 
 How to design and implement continuous integration.
@@ -130,3 +138,4 @@ How to design and implement continuous delivery.
 [href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
 [href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
 [href-phpcs-commenting]: https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting
+[src-github-like-sponsor-button]: https://github.com/szepeviktor/.github/raw/master/.github/assets/github-like-sponsor-button.svg
