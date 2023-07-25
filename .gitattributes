@@ -4,6 +4,7 @@
 /.editorconfig export-ignore
 /.eslintrc export-ignore
 /.yamllint.yml export-ignore
+/.stylelintrc.json export-ignore
 /package-lock.json export-ignore
 /phpunit.xml export-ignore
 /yarn.lock export-ignore
