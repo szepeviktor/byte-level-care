@@ -133,13 +133,9 @@ jobs:
             run: "npm ci"
             #run: "yarn install --non-interactive --pure-lockfile"
         -
-            name: "Install stylelint-formatter-github-annotate"
-            run: "npm install --no-save stylelint-formatter-github-annotate"
-            #run: "yarn add stylelint-formatter-github-annotate"
-        -
             name: "Detect coding standards violations"
-            run: "npm run scss:cs -- --custom-formatter=node_modules/stylelint-formatter-github-annotate"
-            #run: "yarn run scss:cs --custom-formatter=node_modules/stylelint-formatter-github-annotate"
+            run: "npm run scss:cs -- --formatter github"
+            #run: "yarn run scss:cs --formatter github"
 
     build:
         name: "𝟒 Build"
