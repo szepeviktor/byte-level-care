@@ -11,9 +11,12 @@
     ],
     "dependencies": {
         "acorn": "^8.10.0",
-        "eslint": "^8.45.0"
+        "eslint": "^8.45.0",
+        "stylelint": "^15.10.2",
+        "stylelint-config-sass-guidelines": "^10.0.0"
     },
     "scripts": {
+        "scss:cs": "npx stylelint resources/sass/*.scss",
         "js:eslint": "npx eslint resources/js/*.js"
     }
 }
