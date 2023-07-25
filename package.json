@@ -16,6 +16,7 @@
         "stylelint-config-sass-guidelines": "^10.0.0"
     },
     "scripts": {
+        "prod:build": "echo 'The build process'",
         "scss:cs": "npx stylelint resources/sass/*.scss",
         "js:eslint": "npx eslint resources/js/*.js"
     }
