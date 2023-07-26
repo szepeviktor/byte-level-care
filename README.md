@@ -29,6 +29,8 @@ Thank you!
 
 How to design and implement continuous integration.
 
+You find a complete CI workflow in [this repository](.github/workflows).
+
 -   Run in a premade container or install OS packages
 -   Display environment information
 -   Set access credentials
