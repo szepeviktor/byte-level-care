@@ -180,6 +180,9 @@ jobs:
         -
             name: "Check PSR-4 mapping 🐌"
             run: "composer dump-autoload --optimize --strict-psr"
+        -
+            name: "Checks for security vulnerability advisories"
+            run: "composer audit"
         #-
         #    name: "Check architecture"
         #    run: "composer exec -- phparkitect check --config=vendor/mortexa/laravel-arkitect/src/phparkitect.php"
