@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Shell scripts"
+
+on:  # yamllint disable-line rule:truthy
+    pull_request:
+        paths:
+        - "**.sh"
+    push:
+        branches:
+        - "master"
+        paths:
+        - "**.sh"
+# Add [skip ci] to commit message to skip CI.
+
+permissions:
+    contents: "read"
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    shellcheck:
+        name: "ShellCheck"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
+            name: "Run ShellCheck"
+            uses: "ludeeus/action-shellcheck@master"
