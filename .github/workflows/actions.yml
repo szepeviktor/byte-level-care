@@ -27,4 +27,4 @@ jobs:
             name: "Run actionlint"
             uses: "docker://rhysd/actionlint:latest"
             with:
-                args: "-color -verbose -shellcheck ''"
+                args: "-color -verbose"
