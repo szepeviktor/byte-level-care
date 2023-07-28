@@ -68,7 +68,7 @@ jobs:
         -
             name: "Search for invalid complex curly syntax 🐌"
             run: |
-                ! git grep -e '\${[A-Z_a-z]' -- '*.php' '*.scss'
+                ! git grep -e '\${[A-Z_a-z]' -- '*\.php' '*\.scss'
         -
             name: "Check source code for syntax errors"
             run: "composer exec --no-interaction -- parallel-lint src/"
@@ -166,7 +166,7 @@ jobs:
         -
             name: "Check JSON files"
             run: |
-                git ls-files --cached -z -- '*.json' \
+                git ls-files --cached -z -- '*\.json' \
                     | xargs -t --null -L 1 -- \
                         php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
         -
