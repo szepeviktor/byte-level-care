@@ -40,11 +40,11 @@ jobs:
             # https://html.spec.whatwg.org/multipage/named-characters.html
             name: "Find non-printable ASCII characters"
             run: |
-                #! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*.php'
+                #! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php' \
                 #    | grep -v '// @ignore-non-ascii$'
                 #! LC_ALL=C.UTF-8 find ./ -type f -name '*.php' -print0 \
                 #    | xargs --null -- grep --perl-regexp --with-filename --line-number '[^ -~]'
-                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*.php'
+                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php'
 
     syntax_errors:
         name: "1️⃣ Syntax errors"
@@ -112,6 +112,17 @@ jobs:
             with:
                 dependency-versions: "${{ matrix.dependencies }}"
                 #composer-options: "--with=laravel/framework:${{ matrix.laravel-constraint }}"
+        -
+            name: "Declare strict types"
+            if: "${{ matrix.dependencies == 'highest' }}"
+            run: |
+                echo "::group::Install slevomat/coding-standard"
+                composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer false
+                composer require --no-scripts --dev slevomat/coding-standard
+                echo "::endgroup::"
+                composer exec -- phpcbf --standard=vendor/slevomat/coding-standard/SlevomatCodingStandard \
+                    --sniffs=SlevomatCodingStandard.TypeHints.DeclareStrictTypes src/ \
+                    || test "$?" = 1 && exit 0
         -
             name: "Execute unit tests"
             #run: "composer exec -- phpunit"
