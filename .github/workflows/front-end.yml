@@ -165,6 +165,10 @@ jobs:
             run: "npm ci --omit=dev"
             #run: "yarn install --non-interactive --pure-lockfile --production=true"
         -
+            name: "Checks for security vulnerability advisories"
+            run: "npm audit --omit=dev"
+            #run: "yarn audit"
+        -
             name: "Build front-end"
             run: "npm run prod:build"
             #run: "yarn run prod:build"
