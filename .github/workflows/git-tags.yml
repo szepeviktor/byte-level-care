@@ -3,6 +3,7 @@
 name: "Git tags"
 
 on:  # yamllint disable-line rule:truthy
+    delete: null
     push:
         tags:
         - "**"
