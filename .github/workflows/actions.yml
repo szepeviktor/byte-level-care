@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
     actionlint:
+        name: "Actionlint"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:
