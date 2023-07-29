@@ -28,13 +28,13 @@ jobs:
             name: "Query commit email addresses from GitHub API"
             run: |
                 Check_author() {
-                    local AUTHOR="$1"
-                    local GITHUB_API_URL="https://api.github.com/search/users"
-                    echo "Checking ${AUTHOR} ..."
-                    curl --silent --get --data-urlencode "q=type:user in:email ${AUTHOR}" "${GITHUB_API_URL}" \
-                        | grep --fixed-strings --line-regexp '  "total_count": 1,'
+                    local AUTHOR_EMAIL="$1"
+                    local TOTAL_COUNT
+                    TOTAL_COUNT="$(gh api search/users --method GET --raw-field q="in:eml ${AUTHOR_EMAIL}" --jq '."total_count"')"
+                    echo "${AUTHOR_EMAIL}: ${TOTAL_COUNT}"
+                    test "${TOTAL_COUNT}" = 1
                 }
                 COMMIT_RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
-                git show --no-patch --pretty="format:%ae" "${COMMIT_RANGE}"  \
+                git show --no-patch --pretty="format:%ae" "${COMMIT_RANGE}" \
                     | sort --unique \
                     | while read -r AUTHOR; do Check_author "${AUTHOR}"; done
