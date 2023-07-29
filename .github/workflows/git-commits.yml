@@ -32,7 +32,12 @@ jobs:
                 Check_author() {
                     local AUTHOR_EMAIL="$1"
                     local TOTAL_COUNT
-                    TOTAL_COUNT="$(gh api search/users --method GET --raw-field q="in:eml ${AUTHOR_EMAIL}" --jq '."total_count"')"
+                    TOTAL_COUNT="$(
+                        gh api search/users \
+                            --method GET \
+                            --raw-field q="in:eml ${AUTHOR_EMAIL}" \
+                            --jq '."total_count"'
+                    )"
                     echo "${AUTHOR_EMAIL}: ${TOTAL_COUNT}"
                     test "${TOTAL_COUNT}" = 1
                 }
