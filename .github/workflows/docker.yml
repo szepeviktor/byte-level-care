@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
     hadolint:
-        name: "Hadolint"
+        name: "🐳 Hadolint"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:

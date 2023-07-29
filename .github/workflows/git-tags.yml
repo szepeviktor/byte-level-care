@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow
 
-name: "Tags"
+name: "Git tags"
 
 on:  # yamllint disable-line rule:truthy
     push:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
     double_tag:
-        name: "Detect tag without new commit"
+        name: "Tag without new commit"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:
