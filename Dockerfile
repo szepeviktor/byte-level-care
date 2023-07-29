@@ -1,4 +1,4 @@
-FROM debian:12.0-slim
+FROM debian:12.1-slim
 
 ARG LC_ALL=C
 ARG TERM=linux
