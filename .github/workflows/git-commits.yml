@@ -26,6 +26,8 @@ jobs:
                 fetch-depth: 0
         -
             name: "Query commit email addresses from GitHub API"
+            env:
+                GH_TOKEN: "${{ github.token }}"
             run: |
                 Check_author() {
                     local AUTHOR_EMAIL="$1"
