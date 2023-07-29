@@ -35,7 +35,7 @@ jobs:
                     TOTAL_COUNT="$(
                         gh api search/users \
                             --method GET \
-                            --raw-field q="in:eml ${AUTHOR_EMAIL}" \
+                            --raw-field q="type:user in:eml ${AUTHOR_EMAIL}" \
                             --jq '."total_count"'
                     )"
                     echo "${AUTHOR_EMAIL}: ${TOTAL_COUNT}"
