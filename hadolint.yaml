@@ -1,0 +1,16 @@
+# https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys
+label-schema:
+    org.opencontainers.image.created: rfc3339
+    org.opencontainers.image.authors: text
+    org.opencontainers.image.url: url
+    org.opencontainers.image.documentation: url
+    org.opencontainers.image.source: url
+    org.opencontainers.image.version: semver
+    org.opencontainers.image.revision: hash
+    org.opencontainers.image.vendor: text
+    org.opencontainers.image.licenses: spdx
+    org.opencontainers.image.ref.name: text
+    org.opencontainers.image.title: text
+    org.opencontainers.image.description: text
+    # org.opencontainers.image.base.digest: text
+    # org.opencontainers.image.base.name: text
