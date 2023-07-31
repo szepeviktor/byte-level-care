@@ -136,10 +136,12 @@ jobs:
                 echo alma > storage/logs/icipici.naplo
         -
             name: "Tests have failed: upload logs"
+            env:
+                REPOSITORY: "{{ github.repository }}"
             uses: "actions/upload-artifact@v3"
             with:
                 path: "storage/logs/"
-                name: "${{ github.repository }}-laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
+                name: "${REPOSITORY/\/_}-laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
 
     static_analysis:
         name: "3️⃣ Static Analysis"
