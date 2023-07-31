@@ -131,27 +131,15 @@ jobs:
             run: "composer exec -- pest --ci"
             # @TODO Functional tests
         -
+            run: |
+                mkdir -p storage/logs
+                echo alma > storage/logs/icipici.naplo
+        -
             name: "Tests have failed: upload logs"
             uses: "actions/upload-artifact@v3"
             with:
                 path: "storage/logs/"
                 name: "${{ github.repository }}-laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
-        -
-            name: "Tests have failed: upload logs"
-            if: "${{ failure() }}"
-            uses: "actions/upload-artifact@v3"
-            with:
-                path: "storage/logs/"
-                name: "laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
-        -
-            name: "Send coverage to Coveralls"
-            env:
-                COVERALLS_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-            if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
-            run: |
-                wget --no-verbose \
-                    "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
-                php ./php-coveralls.phar --verbose
 
     static_analysis:
         name: "3️⃣ Static Analysis"
