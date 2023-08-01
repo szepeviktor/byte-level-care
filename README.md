@@ -29,6 +29,7 @@ Thank you!
 ---
 
 [![Back-end][src-gha-back-end-badge]][href-gha-back-end]
+[![Coverage Status][src-coveralls-badge]][href-coveralls]
 [![License][src-packagist-license]][href-license-file]
 [![PHP Version][src-php-version]][href-composer-file]
 [![Packagist stats][src-packagist-downloads]][href-packagist-stats]
@@ -148,6 +149,7 @@ How to design and implement continuous delivery.
 -   szepeviktor/phpstan-wordpress
 
 [href-composer-file]: https://github.com/szepeviktor/byte-level-care/blob/master/composer.json
+[href-coveralls]: https://coveralls.io/github/szepeviktor/byte-level-care?branch=master
 [href-gha-back-end]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml
 [href-gh-theories]: https://github.com/stars/szepeviktor/lists/theory
 [href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
@@ -159,6 +161,7 @@ How to design and implement continuous delivery.
 [href-phpstan-org]: https://phpstan.org/
 [href-sponsor-page]: https://github.com/sponsors/szepeviktor
 [src-badge-more-theories]: https://img.shields.io/badge/more-theories-purple
+[src-coveralls-badge]: https://coveralls.io/repos/github/szepeviktor/byte-level-care/badge.svg?branch=master
 [src-gha-back-end-badge]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml/badge.svg
 [src-latest-version]: https://img.shields.io/packagist/v/szepeviktor/phpstan-wordpress.svg
 [src-packagist-downloads]: https://img.shields.io/packagist/dt/szepeviktor/phpstan-wordpress.svg
