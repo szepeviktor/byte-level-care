@@ -136,6 +136,7 @@ jobs:
             uses: "actions/upload-artifact@v3"
             with:
                 path: "storage/logs/"
+                # Prefix with project name (github.repository contains a slash)
                 name: "laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
         -
             name: "Send coverage to Coveralls"
