@@ -33,7 +33,6 @@ Thank you!
 [![PHP Version][src-php-version]][href-composer-file]
 [![Packagist stats][src-packagist-downloads]][href-packagist-stats]
 [![Latest version][src-latest-version]][href-packagist]
-[![Tweet][src-twitter-share]][href-twitter-share-stan]
 [![PHPStan enabled][src-phpstan-enabled]][href-phpstan-org]
 
 ## CI
@@ -164,6 +163,6 @@ How to design and implement continuous delivery.
 [src-latest-version]: https://img.shields.io/packagist/v/szepeviktor/phpstan-wordpress.svg
 [src-packagist-downloads]: https://img.shields.io/packagist/dt/szepeviktor/phpstan-wordpress.svg
 [src-packagist-license]: https://img.shields.io/packagist/l/szepeviktor/phpstan-wordpress
-[src-phpstan-enabled]: https://img.shields.io/badge/PHPStan-enabled-239922
+[src-phpstan-enabled]: https://img.shields.io/badge/PHPStan-enabled-44CC11
 [src-php-version]: https://img.shields.io/packagist/dependency-v/szepeviktor/phpstan-wordpress/php
 [src-sponsor-button]: https://github.com/szepeviktor/.github/raw/master/.github/assets/github-like-sponsor-button.svg
