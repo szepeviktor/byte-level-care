@@ -10,7 +10,11 @@
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
-    <coverage/>
+    <coverage>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
     <source>
         <include>
             <directory suffix=".php">./src</directory>
