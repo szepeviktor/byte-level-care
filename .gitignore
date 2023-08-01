@@ -1,7 +1,7 @@
 # 1. Keep ignores organized in categories
 # 2. Keep "OS" and "IDE and local environment" patterns on your local machine in user home
 #     git config --global core.excludesFile ~/.gitignore
-#     A single .gitignore file cannot cover every OS, every IDE and every local environment.
+#     A single .gitignore file in a project cannot cover every OS, every IDE and every local environment.
 #     https://git-scm.com/docs/gitignore
 # 3. Anchor patterns with a leading slash
 # 4. Add a trailing slash to directories
@@ -16,9 +16,9 @@
 /vendor/
 /node_modules/
 
-# Application
+# Application / Library
+/build/
 
 # Tests
-/build/
 
 # Distribution
