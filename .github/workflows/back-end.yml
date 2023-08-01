@@ -40,11 +40,13 @@ jobs:
             # https://html.spec.whatwg.org/multipage/named-characters.html
             name: "Find non-printable ASCII characters"
             run: |
+                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php'
+                # Ignore lines
                 #! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php' \
                 #    | grep -v '// @ignore-non-ascii$'
+                # Filesystem-based
                 #! LC_ALL=C.UTF-8 find ./ -type f -name '*.php' -print0 \
                 #    | xargs --null -- grep --perl-regexp --with-filename --line-number '[^ -~]'
-                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php'
 
     syntax_errors:
         name: "1️⃣ Syntax errors"
@@ -106,7 +108,7 @@ jobs:
             name: "Install dependencies"
             uses: "ramsey/composer-install@v2"
             #env:
-            #    COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
+            #    COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ github.token }}"}}'
             # yamllint disable-line rule:line-length
             #    COMPOSER_AUTH: '{"http-basic":{"nova.laravel.com":{"username":"${{ secrets.NOVA_LICENSE_ACCOUNT }}","password":"${{ secrets.NOVA_LICENSE_KEY }}"}}}'
             with:
@@ -128,23 +130,22 @@ jobs:
             #run: "composer exec -- phpunit"
             run: "composer exec -- pest --ci"
             # @TODO Functional tests
-            # yamllint disable-line rule:comments-indentation
-        #-
-        #    name: "Tests have failed: upload logs"
-        #    if: "${{ failure() }}"
-        #    uses: "actions/upload-artifact@v3"
-        #    with:
-        #        path: "storage/logs/"
-        #        name: "laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
-        #-
-        #    name: "Send coverage to Coveralls"
-        #    env:
-        #        COVERALLS_REPO_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        #    if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
-        #    run: |
-        #        wget --no-verbose \
-        #            "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
-        #        php ./php-coveralls.phar --verbose
+        -
+            name: "Tests have failed: upload logs"
+            if: "${{ failure() }}"
+            uses: "actions/upload-artifact@v3"
+            with:
+                path: "storage/logs/"
+                name: "laravel-logs-${{ matrix.php-version }}-${{ matrix.dependencies }}"
+        -
+            name: "Send coverage to Coveralls"
+            env:
+                COVERALLS_REPO_TOKEN: "${{ github.token }}"
+            if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
+            run: |
+                wget --no-verbose \
+                    "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
+                php ./php-coveralls.phar --verbose
 
     static_analysis:
         name: "3️⃣ Static Analysis"
@@ -181,7 +182,7 @@ jobs:
             name: "Check PSR-4 mapping 🐌"
             run: "composer dump-autoload --optimize --strict-psr"
         -
-            name: "Checks for security vulnerability advisories"
+            name: "Check for security vulnerability advisories"
             run: "composer audit"
         #-
         #    name: "Check architecture"

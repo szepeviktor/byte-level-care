@@ -1,6 +1,7 @@
 # Byte-level care
 
 [![theories](https://img.shields.io/badge/more-theories-purple)](https://github.com/stars/szepeviktor/lists/theory)
+[![Tweet](https://img.shields.io/badge/Tweet-share-d5d5d5?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Living%20with%20zero%20problems%20while%20developing%20your%20web%20application&url=https%3A%2F%2Fgithub.com%2Fszepeviktor%2Fbyte-level-care)
 
 How to live with zero problems through Total Control.
 
@@ -24,6 +25,16 @@ Please consider supporting my work if you benefit from this knowledge.
 [![Sponsor][src-sponsor-button]][href-sponsor-page]
 
 Thank you!
+
+---
+
+[![Back-end][src-gha-back-end-badge]][href-gha-back-end]
+[![License][src-packagist-license]][href-license-file]
+[![PHP Version][src-php-version]][href-composer-file]
+[![Packagist stats][src-packagist-downloads]][href-packagist-stats]
+[![Latest version][src-latest-version]][href-packagist]
+[![Tweet][src-twitter-share]][href-twitter-share-stan]
+[![PHPStan enabled][src-phpstan-enabled]][href-phpstan-org]
 
 ## CI
 
@@ -137,8 +148,22 @@ How to design and implement continuous delivery.
 -   nunomaduro/larastan
 -   szepeviktor/phpstan-wordpress
 
-[href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
+[href-composer-file]: https://github.com/szepeviktor/byte-level-care/blob/master/composer.json
+[href-gha-back-end]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml
+[href-gh-theories]: https://github.com/stars/szepeviktor/lists/theory
 [href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
+[href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
+[href-license-file]: https://github.com/szepeviktor/byte-level-care/blob/master/LICENSE
+[href-packagist]: https://packagist.org/packages/szepeviktor/phpstan-wordpress
+[href-packagist-stats]: https://packagist.org/packages/szepeviktor/phpstan-wordpress/stats
 [href-phpcs-commenting]: https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting
+[href-phpstan-org]: https://phpstan.org/
 [href-sponsor-page]: https://github.com/sponsors/szepeviktor
+[src-badge-more-theories]: https://img.shields.io/badge/more-theories-purple
+[src-gha-back-end-badge]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml/badge.svg
+[src-latest-version]: https://img.shields.io/packagist/v/szepeviktor/phpstan-wordpress.svg
+[src-packagist-downloads]: https://img.shields.io/packagist/dt/szepeviktor/phpstan-wordpress.svg
+[src-packagist-license]: https://img.shields.io/packagist/l/szepeviktor/phpstan-wordpress
+[src-phpstan-enabled]: https://img.shields.io/badge/PHPStan-enabled-239922
+[src-php-version]: https://img.shields.io/packagist/dependency-v/szepeviktor/phpstan-wordpress/php
 [src-sponsor-button]: https://github.com/szepeviktor/.github/raw/master/.github/assets/github-like-sponsor-button.svg
