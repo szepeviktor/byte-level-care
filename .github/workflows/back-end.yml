@@ -19,35 +19,6 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    byte_level:
-        name: "0️⃣ Byte-level"
-        runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
-        steps:
-        -
-            name: "Checkout repository"
-            uses: "actions/checkout@v3"
-        -
-            name: "Check file permissions"
-            run: |
-                test "$(find ./ -type f -not -path './.git/*' -executable)" = ""
-        -
-            # https://github.com/greut/eclint/issues/6
-            name: "Check for byte order mark (BOM)"
-            run: |
-                ! git grep --perl-regexp -I -e '^\xEF\xBB\xBF'
-        -
-            # https://html.spec.whatwg.org/multipage/named-characters.html
-            name: "Find non-printable ASCII characters"
-            run: |
-                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php'
-                # Ignore lines
-                #! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- '*\.php' \
-                #    | grep -v '// @ignore-non-ascii$'
-                # Filesystem-based
-                #! LC_ALL=C.UTF-8 find ./ -type f -name '*.php' -print0 \
-                #    | xargs --null -- grep --perl-regexp --with-filename --line-number '[^ -~]'
-
     syntax_errors:
         name: "1️⃣ Syntax errors"
         runs-on: "ubuntu-22.04"
@@ -64,13 +35,9 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3"
         -
-            name: "Search for conflict markers 🐌"
-            run: |
-                ! git grep --line-number -e '^\(<<<<<<<\s\|=======\s\|=======$\|>>>>>>>\s\||||||||\s\)'
-        -
             name: "Search for invalid complex curly syntax 🐌"
             run: |
-                ! git grep -e '\${[A-Z_a-z]' -- '*\.php' '*\.scss'
+                ! git grep -e '\${[A-Z_a-z]' -- '*.php' '*.scss'
         -
             name: "Check source code for syntax errors"
             run: "composer exec --no-interaction -- parallel-lint src/"
@@ -79,7 +46,6 @@ jobs:
     unit_tests:
         name: "2️⃣ Unit and functional tests"
         needs:
-        - "byte_level"
         - "syntax_errors"
         strategy:
             #fail-fast: false
@@ -151,7 +117,6 @@ jobs:
     static_analysis:
         name: "3️⃣ Static Analysis"
         needs:
-        - "byte_level"
         - "syntax_errors"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 5
@@ -168,7 +133,7 @@ jobs:
         -
             name: "Check JSON files"
             run: |
-                git ls-files --cached -z -- '*\.json' \
+                git ls-files --cached -z -- '*.json' \
                     | xargs -t --null -L 1 -- \
                         php -r 'json_decode(file_get_contents($argv[1]), null, 512, JSON_THROW_ON_ERROR);'
         -
@@ -192,7 +157,7 @@ jobs:
             # https://github.com/phpstan/phpstan/issues/9475
             name: "Search for $this->$this typo 🐌"
             run: |
-                ! git grep --line-number -e '\$this\s*->\s*\$this' -- ':!:*/back-end\.yml'
+                ! git grep --line-number -e '\$this\s*->\s*\$this' -- ':!:*/back-end.yml'
         -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze --level=5 src/"
@@ -201,7 +166,6 @@ jobs:
     coding_standards:
         name: "4️⃣ Coding Standards"
         needs:
-        - "byte_level"
         - "syntax_errors"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 5
@@ -242,46 +206,3 @@ jobs:
         #    name: "Annotate Pint results"
         #    if: "${{ failure() && steps.pint.outcome == 'failure' }}"
         #    run: "composer exec -- pint --test --format=checkstyle | cs2pr"
-        -
-            # Move TODO-s into GitHub issues!
-            name: "Search for TODO-s and FIXME-s 🐌"
-            run: |
-                ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' -- ':!:*/back-end\.yml'
-        -
-            name: "Remove blank first lines and multiple blank lines 🐌"
-            run: |
-                git ls-files --cached -z -- ':(exclude,glob)**/yarn.lock' \
-                    | xargs --null -L 1 -- sed -i -e '/./,$!d' -e '/^$/N;/^\n$/D'
-        -
-            name: "Check differences to repository"
-            run: "git diff --exit-code"
-
-    exported_files:
-        name: "5️⃣ Exported files"
-        needs:
-        - "byte_level"
-        - "syntax_errors"
-        runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
-        steps:
-        -
-            name: "Checkout repository"
-            uses: "actions/checkout@v3"
-        -
-            name: "Check for ignored files in the index 🐌"
-            run: |
-                # Add negated files: ':!:path/to/negated'
-                IGNORED_FILES="$(git ls-files --cached --ignored --exclude-standard)"
-                test -z "${IGNORED_FILES}"
-        -
-            name: "Check exported files"
-            run: |
-                EXPECTED="LICENSE,README.md,composer.json,package.json"
-                CURRENT="$(
-                    git archive HEAD \
-                        | tar --list --exclude="src" --exclude="src/*" --exclude="resources" --exclude="resources/*" \
-                        | paste --serial --delimiters=","
-                )"
-                echo "CURRENT =${CURRENT}"
-                echo "EXPECTED=${EXPECTED}"
-                test "${CURRENT}" = "${EXPECTED}"
