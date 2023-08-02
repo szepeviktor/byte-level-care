@@ -95,7 +95,7 @@ jobs:
             name: "Execute unit tests"
             #run: "composer exec -- phpunit"
             run: "composer exec -- pest --ci"
-            # @TODO Functional tests
+            # @TODO Run functional tests
         -
             name: "Tests have failed: upload logs"
             if: "${{ failure() }}"
@@ -161,7 +161,7 @@ jobs:
         -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze --level=5 src/"
-            # @TODO Cognitive Complexity, Mess Detector, Magic Number Detector, Copy-Paste Detector
+            # @TODO Cognitive Complexity, Mess Detector, Magic Number Detector, Copy-Paste Detector, Arkitect
 
     coding_standards:
         name: "4️⃣ Coding Standards"

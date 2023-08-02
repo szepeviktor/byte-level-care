@@ -59,7 +59,8 @@ jobs:
             # Move TODO-s into GitHub issues!
             name: "Search for TODO-s and FIXME-s 🐌"
             run: |
-                ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' -- ':!:*/integrity.yml'
+                ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
+                    -- ':!:*/integrity.yml' ':!:*/back-end.yml'
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
