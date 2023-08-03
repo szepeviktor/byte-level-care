@@ -155,9 +155,9 @@ jobs:
         #    run: "composer exec -- phparkitect check --config=vendor/mortexa/laravel-arkitect/src/phparkitect.php"
         -
             # https://github.com/phpstan/phpstan/issues/9475
-            name: "Search for $this->$this typo 🐌"
+            name: "Search for $this typos 🐌"
             run: |
-                ! git grep --line-number -e '\$this\s*->\s*\$this' -- ':!:*/back-end.yml'
+                ! git grep --line-number -e '\$this\s*->\s*\$this\|\$\$this' -- ':!:*/back-end.yml'
         -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze --level=5 src/"
