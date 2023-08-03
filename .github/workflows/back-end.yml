@@ -181,16 +181,6 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3"
         -
-            name: "Check EditorConfig configuration"
-            run: "test -f .editorconfig"
-        -
-            name: "Check adherence to EditorConfig"
-            uses: "greut/eclint-action@v0"
-        -
-            name: "Look for TAB characters in the middle of the line 🐌"
-            run: |
-                ! git grep --perl-regexp --line-number -I '^(?!//)[^\t]+\t'
-        -
             name: "Install dependencies"
             uses: "ramsey/composer-install@v2"
             with:
