@@ -40,7 +40,7 @@ jobs:
                 ! git grep -e '\${[A-Z_a-z]' -- '*.php' '*.scss'
         -
             name: "Check source code for syntax errors"
-            run: "composer exec --no-interaction -- parallel-lint src/"
+            run: "composer exec --no-interaction -- parallel-lint src/ tests/"
             # @TODO Check template files for syntax errors
 
     unit_tests:
@@ -161,7 +161,10 @@ jobs:
         -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze --level=5 src/"
-            # @TODO Cognitive Complexity, Mess Detector, Magic Number Detector, Copy-Paste Detector, Arkitect
+            # @TODO Cognitive Complexity tomasvotruba/cognitive-complexity
+            # Mess Detector phpmd/phpmd
+            # Magic Number Detector povils/phpmnd
+            # Copy-Paste Detector https://github.com/mkrauser/phpcpd
 
     coding_standards:
         name: "4️⃣ Coding Standards"
