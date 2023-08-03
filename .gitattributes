@@ -7,6 +7,7 @@
 /.markdownlint-cli2.yaml export-ignore
 /.yamllint.yml export-ignore
 /.stylelintrc.json export-ignore
+/.typos.toml export-ignore
 /Dockerfile export-ignore
 /package-lock.json export-ignore
 /phpunit.xml export-ignore

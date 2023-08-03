@@ -8,8 +8,10 @@ on:  # yamllint disable-line rule:truthy
         branches:
         - "master"
 
-permissions:
-    contents: "read"
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read"
 
 concurrency:
     group: "${{ github.workflow }}-${{ github.ref }}"
