@@ -29,3 +29,5 @@ jobs:
         -
             name: "Search for misspellings"
             uses: "crate-ci/typos@master"
+            with:
+                files: "--hidden --exclude=.git/"
