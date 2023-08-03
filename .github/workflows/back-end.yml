@@ -198,6 +198,7 @@ jobs:
         -
             name: "Detect coding standards violations"
             run: "composer exec -- phpcs -q --report=checkstyle --standard=PSR12 src/ | cs2pr"
+            # yamllint disable-line rule:comments-indentation
         #-
         #    name: "Detect coding standards violations"
         #    id: "pint"
