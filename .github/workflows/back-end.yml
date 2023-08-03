@@ -38,6 +38,7 @@ jobs:
             name: "Search for invalid complex curly syntax 🐌"
             run: |
                 ! git grep -e '\${[A-Z_a-z]' -- '*.php' '*.scss'
+                echo "Hello" >world
         -
             name: "Check source code for syntax errors"
             run: "composer exec --no-interaction -- parallel-lint src/ tests/"
