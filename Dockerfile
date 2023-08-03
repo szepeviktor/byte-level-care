@@ -3,7 +3,7 @@ FROM debian:12.1-slim
 LABEL org.opencontainers.image.title="Byte-level care"
 LABEL org.opencontainers.image.description="A robust web application"
 LABEL org.opencontainers.image.vendor="Szépe Viktor"
-LABEL org.opencontainers.image.authors="viktor@szepe.net"
+LABEL org.opencontainers.image.authors="viktor@szepe.ne"
 LABEL org.opencontainers.image.licenses="MIT"
 LABEL org.opencontainers.image.version="1.0.0"
 LABEL org.opencontainers.image.created="2023-07-30T06:35:19.55260855+00:00"

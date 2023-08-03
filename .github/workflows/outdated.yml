@@ -8,6 +8,11 @@ on:  # yamllint disable-line rule:truthy
     - cron: "31 04 * * 1"
     workflow_dispatch: null
 
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read"
+
 concurrency:
     group: "${{ github.workflow }}-${{ github.ref }}"
     cancel-in-progress: true

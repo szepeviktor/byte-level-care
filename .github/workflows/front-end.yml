@@ -29,10 +29,10 @@ on:  # yamllint disable-line rule:truthy
         - "master"
 # Add [skip ci] to commit message to skip CI.
 
-# permissions: {}
-# permissions: "read-all"
-permissions:
-    contents: "read"
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read"
 
 concurrency:
     group: "${{ github.workflow }}-${{ github.ref }}"
