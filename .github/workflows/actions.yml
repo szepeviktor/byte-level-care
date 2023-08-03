@@ -16,6 +16,27 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
+    job_count:
+        name: "Display job count"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
+            name: "Display total job count in all workflows"
+            run: |
+                Job_count() {
+                    find .github/workflows -type f -name "*.yml" -print0 \
+                        | xargs --null -n 1 -- yq '."jobs" | keys | length' \
+                        | paste --serial --delimiters="+" \
+                        | bc
+                }
+                printf ':construction_worker: Total number of jobs: %d' \
+                    "$(Job_count)" \
+                    >>"${GITHUB_STEP_SUMMARY}"
+
     actionlint:
         name: "Actionlint"
         runs-on: "ubuntu-22.04"
