@@ -4,7 +4,7 @@
 
 You can call any of these workflows that contain `on: workflow_call`.
 
-```
+```yaml
 name: "My Workflow"
 
 on:
