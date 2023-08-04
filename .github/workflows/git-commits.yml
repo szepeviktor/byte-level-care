@@ -4,6 +4,7 @@ name: "Git commits"
 
 on:  # yamllint disable-line rule:truthy
     pull_request: null
+    workflow_call: null
 # Add [skip ci] to commit message to skip CI.
 
 permissions: {}  # yamllint disable-line rule:braces

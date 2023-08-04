@@ -17,6 +17,7 @@ on:  # yamllint disable-line rule:truthy
         - "**/*.yaml"
         - "**/*.yml.dist"
         - "**/*.yaml.dist"
+    workflow_call: null
 # Add [skip ci] to commit message to skip CI.
 
 permissions: {}  # yamllint disable-line rule:braces

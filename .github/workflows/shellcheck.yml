@@ -11,6 +11,7 @@ on:  # yamllint disable-line rule:truthy
         - "master"
         paths:
         - "**.sh"
+    workflow_call: null
 # Add [skip ci] to commit message to skip CI.
 
 permissions: {}  # yamllint disable-line rule:braces
