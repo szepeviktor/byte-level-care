@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow
 
-name: "Integrity"
+name: "Shared Integrity"
 # This action prevents earthquakes.
 
 on:  # yamllint disable-line rule:truthy
@@ -23,7 +23,7 @@ permissions: {}  # yamllint disable-line rule:braces
 #    contents: "read"
 
 concurrency:
-    group: "${{ github.workflow }}-${{ github.ref }}"
+    group: "${{ github.workflow }}-${{ github.ref }}-reusable-integrity"
     cancel-in-progress: true
 
 jobs:
