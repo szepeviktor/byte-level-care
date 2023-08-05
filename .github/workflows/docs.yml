@@ -28,8 +28,8 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    markdown:
-        name: "Markdown"
+    markdown_format:
+        name: "Markdown Format"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:
@@ -37,7 +37,7 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3"
         -
-            name: "Check Markdown documents"
+            name: "Check Markdown formatting"
             uses: "DavidAnson/markdownlint-cli2-action@v11"
             with:
                 globs: "**/*.md"
