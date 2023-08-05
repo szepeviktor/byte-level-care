@@ -22,6 +22,16 @@ jobs:
     call_workflow_integrity:
         name: "Integrity"
         uses: "./.github/workflows/reusable-integrity.yml"
-        #with:
-        #    executables: ""
-        #    exported-files: "LICENSE,README.md,composer.json,package.json"
+        with:
+            not-printable-ascii-files: >-
+                src/
+                resources/
+                tests/
+            exported-directories: >-
+                --exclude="src" --exclude="src/*"
+                --exclude="resources" --exclude="resources/*"
+            exported-files: >-
+                LICENSE
+                README.md
+                composer.json
+                package.json

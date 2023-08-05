@@ -7,14 +7,24 @@ on:  # yamllint disable-line rule:truthy
     workflow_call:
         inputs:
             executables:
-                description: "List of executable files each with a leading colon"
+                description: "List of executable files"
                 type: "string"
                 default: ""
                 required: false
-            exported-files:
-                description: "Comma-separated list of the expected exported files"
+            not-printable-ascii-files:
+                description: "Directories to be searched for characters outside the printable ASCII range"
                 type: "string"
-                default: "LICENSE,README.md,composer.json,package.json"
+                default: "src/ tests/"
+                required: false
+            exported-directories:
+                description: "List of the expected exported directories"
+                type: "string"
+                default: '--exclude="src" --exclude="src/*"'
+                required: false
+            exported-files:
+                description: "List of the expected exported files"
+                type: "string"
+                default: "LICENSE README.md composer.json"
                 required: false
 
 permissions: {}  # yamllint disable-line rule:braces
@@ -38,7 +48,8 @@ jobs:
         -
             name: "Check file permissions"
             run: |
-                test "$(find ./ -type f -not -path './.git/*' -executable -printf ':%p')" = "${{ inputs.executables }}"
+                test "$(find ./ -type f -not -path './.git/*' -executable -exec echo -n '{}' '+')" \
+                    = "${{ inputs.executables }}"
         -
             # https://github.com/greut/eclint/issues/6
             name: "Check for byte order mark (BOM)"
@@ -48,7 +59,8 @@ jobs:
             # https://html.spec.whatwg.org/multipage/named-characters.html
             name: "Search for characters outside the printable ASCII range"
             run: |
-                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' -- src/ resources/ tests/
+                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' \
+                    -- ${{ inputs.not-printable-ascii-files }}
                 # Filesystem-based
                 #! LC_ALL=C.UTF-8 find src/ resources/ tests/ -type f -print0 \
                 #    | xargs --null -- grep --perl-regexp --with-filename --line-number '[^ -~]'
@@ -69,7 +81,7 @@ jobs:
             name: "Search for TODO-s and FIXME-s 🐌"
             run: |
                 ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
-                    -- ':!:*/integrity.yml' ':!:*/back-end.yml'
+                    -- ':!:.github/workflows/reusable-integrity.yml' ':!:.github/workflows/back-end.yml'
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
@@ -112,8 +124,8 @@ jobs:
                 EXPECTED="${{ inputs.exported-files }}"
                 CURRENT="$(
                     git archive HEAD \
-                        | tar --list --exclude="src" --exclude="src/*" --exclude="resources" --exclude="resources/*" \
-                        | paste --serial --delimiters=","
+                        | tar --list ${{ inputs.exported-directories }} \
+                        | paste --serial --delimiters=" "
                 )"
                 echo "CURRENT =${CURRENT}"
                 echo "EXPECTED=${EXPECTED}"
