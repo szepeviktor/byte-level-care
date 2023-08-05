@@ -9,6 +9,7 @@
 /.stylelintrc.json export-ignore
 /.typos.toml export-ignore
 /Dockerfile export-ignore
+/markdown-link-check.json export-ignore
 /package-lock.json export-ignore
 /phpunit.xml export-ignore
 /yarn.lock export-ignore
