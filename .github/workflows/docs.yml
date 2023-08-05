@@ -39,3 +39,26 @@ jobs:
             uses: "DavidAnson/markdownlint-cli2-action@v11"
             with:
                 globs: "**/*.md"
+
+    markdown_link:
+        name: "Markdown link"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 10
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
+            name: "Cache NPM"
+            uses: "actions/cache@v3"
+            with:
+                path: "~/.npm"
+                key: "${{ runner.os }}-npm-markdown-link-check"
+        -
+            name: "Install markdown-link-check"
+            run: "npm install --global markdown-link-check"
+        -
+            name: "Check Markdown links"
+            run: |
+                git ls-files -z -- '*.md' \
+                    | xargs -0 -- npm exec -- markdown-link-check -p -c markdown-link-check.json
