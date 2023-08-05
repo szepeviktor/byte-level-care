@@ -100,7 +100,7 @@ How to design and implement continuous delivery.
 -   Optionally back up project files before starting to deploy
 -   Create a bot user on the server for git access with SSH key (`@companybot`)
 -   List changes in current project files
--   [Check for maintenance mode](/webserver/laravel/Commands/IsDownForMaintenance.php),
+-   [Check for maintenance mode][href-laravel-isdown],
     Turn on maintenance mode `php artisan down`
     covering static resource, page, AJAX and API requests
 -   Clear caches (configuration, routes, application, template etc.)
@@ -154,6 +154,7 @@ How to design and implement continuous delivery.
 [href-gha-back-end]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml
 [href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
 [href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
+[href-laravel-isdown]: https://github.com/szepeviktor/running-laravel/blob/master/app/Console/Commands/IsDownForMaintenanceCommand.php
 [href-license-file]: https://github.com/szepeviktor/byte-level-care/blob/master/LICENSE
 [href-packagist]: https://packagist.org/packages/szepeviktor/phpstan-wordpress
 [href-packagist-stats]: https://packagist.org/packages/szepeviktor/phpstan-wordpress/stats
