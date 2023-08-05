@@ -19,7 +19,7 @@ on:  # yamllint disable-line rule:truthy
             exported-directories:
                 description: "List of the expected exported directories"
                 type: "string"
-                default: '--exclude="src" --exclude="src/*"'
+                default: "--exclude='src' --exclude='src/*'"
                 required: false
             exported-files:
                 description: "List of the expected exported files"
