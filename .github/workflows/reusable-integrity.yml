@@ -11,17 +11,17 @@ on:  # yamllint disable-line rule:truthy
                 type: "string"
                 default: ""
                 required: false
-            not-printable-ascii-files:
-                description: "Directories to be searched for characters outside the printable ASCII range"
+            not-printable-ascii-paths:
+                description: "Paths to be searched for characters outside the printable ASCII range"
                 type: "string"
                 default: "src/ tests/"
                 required: false
-            exported-directories:
+            export-excludes:
                 description: "List of the expected exported directories"
                 type: "string"
                 default: "--exclude='src' --exclude='src/*'"
                 required: false
-            exported-files:
+            exported-paths:
                 description: "List of the expected exported files"
                 type: "string"
                 default: "LICENSE README.md composer.json"
@@ -48,8 +48,13 @@ jobs:
         -
             name: "Check file permissions"
             run: |
-                test "$(find ./ -type f -not -path './.git/*' -executable -exec echo -n '{}' '+')" \
-                    = "${{ inputs.executables }}"
+                test "$(
+                    find ./
+                        -type f
+                        -not -path './.git/*'
+                        -executable
+                        -exec echo -n '{}' '+'
+                )" = "${{ inputs.executables }}"
         -
             # https://github.com/greut/eclint/issues/6
             name: "Check for byte order mark (BOM)"
@@ -60,7 +65,7 @@ jobs:
             name: "Search for characters outside the printable ASCII range"
             run: |
                 ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' \
-                    -- ${{ inputs.not-printable-ascii-files }}
+                    -- ${{ inputs.not-printable-ascii-paths }}
                 # Filesystem-based
                 #! LC_ALL=C.UTF-8 find src/ resources/ tests/ -type f -print0 \
                 #    | xargs --null -- grep --perl-regexp --with-filename --line-number '[^ -~]'
@@ -121,10 +126,10 @@ jobs:
         -
             name: "Check exported files"
             run: |
-                EXPECTED="${{ inputs.exported-files }}"
+                EXPECTED="${{ inputs.exported-paths }}"
                 CURRENT="$(
                     git archive HEAD \
-                        | tar --list ${{ inputs.exported-directories }} \
+                        | tar --list ${{ inputs.export-excludes }} \
                         | paste --serial --delimiters=" "
                 )"
                 echo "CURRENT =${CURRENT}"

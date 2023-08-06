@@ -23,14 +23,14 @@ jobs:
         name: "Integrity"
         uses: "./.github/workflows/reusable-integrity.yml"
         with:
-            not-printable-ascii-files: >-
+            not-printable-ascii-paths: >-
                 src/
                 resources/
                 tests/
-            exported-directories: >-
+            export-excludes: >-
                 --exclude="src" --exclude="src/*"
                 --exclude="resources" --exclude="resources/*"
-            exported-files: >-
+            exported-paths: >-
                 LICENSE
                 README.md
                 composer.json
