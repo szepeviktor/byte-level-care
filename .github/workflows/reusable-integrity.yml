@@ -49,12 +49,16 @@ jobs:
             name: "Check file permissions"
             run: |
                 test "$(
-                    find ./
-                        -type f
-                        -not -path './.git/*'
-                        -executable
-                        -exec echo -n '{}' '+'
+                    git ls-files --stage \
+                        | grep -v '^100644' \
+                        | cut -c '51-'
                 )" = "${{ inputs.executables }}"
+                # Filesystem-based
+                #test "$(
+                #    find ./ -type f -not -path './.git/*' \
+                #        -executable \
+                #        -exec echo -n '{}' '+'
+                #)" = "${{ inputs.executables }}"
         -
             # https://github.com/greut/eclint/issues/6
             name: "Check for byte order mark (BOM)"
