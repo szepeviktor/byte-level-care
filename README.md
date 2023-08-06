@@ -144,7 +144,6 @@ How to design and implement continuous delivery.
 [href-license-file]: https://github.com/szepeviktor/byte-level-care/blob/master/LICENSE
 [href-packagist]: https://packagist.org/packages/szepeviktor/phpstan-wordpress
 [href-packagist-stats]: https://packagist.org/packages/szepeviktor/phpstan-wordpress/stats
-[href-phpcs-commenting]: https://github.com/squizlabs/PHP_CodeSniffer/tree/master/src/Standards/PEAR/Sniffs/Commenting
 [href-phpstan-org]: https://phpstan.org/
 [href-sponsor-page]: https://github.com/sponsors/szepeviktor
 [src-coveralls-badge]: https://coveralls.io/repos/github/szepeviktor/byte-level-care/badge.svg?branch=master
