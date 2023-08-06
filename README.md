@@ -122,32 +122,18 @@ How to design and implement continuous delivery.
 -   "Was down for X seconds"
 -   Send email, Slack, Trello or Google Hangouts notification
 
-## Coding standards
+## Static analysis with PHPStan
 
--   Tool: squizlabs/php_codesniffer # `phive install phpcs`
--   Tool: dealerdirect/phpcodesniffer-composer-installer
-
--   [commenting rules][href-phpcs-commenting]
--   wp-coding-standards/wpcs
--   automattic/phpcs-neutron-standard , automattic/phpcs-neutron-ruleset
--   slevomat/coding-standard
--   object-calisthenics/phpcs-calisthenics-rules
--   consistence/coding-standard
--   symplify/coding-standard
-
-## Static analysis
-
--   Tool: phpstan/phpstan # `phive install phpstan`
--   Tool: dave-liddament/sarb # `phive install sarb`
-
--   ekino/phpstan-banned-code
--   phpstan/phpstan-strict-rules
--   phpstan/phpstan-deprecation-rules
--   ergebnis/phpstan-rules
--   thecodingmachine/phpstan-strict-rules
--   pepakriz/phpstan-exception-rules
--   nunomaduro/larastan
--   szepeviktor/phpstan-wordpress
+- [Extensions](https://phpstan.org/user-guide/extension-library)
+- `phpstan/phpstan-strict-rules`
+- `phpstan/phpstan-deprecation-rules`
+- `dave-liddament/sarb`
+- `ekino/phpstan-banned-code`
+- `tomasvotruba/type-coverage`
+- `pepakriz/phpstan-exception-rules`
+- `canvural/larastan-strict-rules`
+- `schlndh/maria-stan`
+- [Starred repositories](https://github.com/stars/szepeviktor/lists/static-analysis)
 
 [href-composer-file]: https://github.com/szepeviktor/byte-level-care/blob/master/composer.json
 [href-coveralls]: https://coveralls.io/github/szepeviktor/byte-level-care?branch=master
