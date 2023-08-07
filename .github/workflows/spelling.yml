@@ -33,6 +33,7 @@ jobs:
             #uses: "crate-ci/typos@master"
             env:
                 GH_TOKEN: "${{ github.token }}"
+            # yamllint disable rule:line-length
             run: |
                 set -o pipefail
                 mkdir -p "${{ runner.temp }}/typos"
@@ -42,7 +43,7 @@ jobs:
                 )"
                 wget -q -O - "${RELEASE_ASSET_URL}" \
                     | tar -xz -C "${{ runner.temp }}/typos" ./typos
+                "${{ runner.temp }}/typos/typos" --version
                 git ls-files -z \
                     | xargs -0 -t -- "${{ runner.temp }}/typos/typos" --format json \
                     | jq --raw-output '"::warning file=\(.path),line=\(.line_num),col=\(.byte_offset)::\"\(.typo)\" should be \"" + (.corrections // [] | join("\" or \"") + "\".")'
-                # A typo!! "Apropriate"
