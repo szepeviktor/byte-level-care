@@ -59,7 +59,7 @@ jobs:
         timeout-minutes: 5
         services:
             database:
-                image: "mariadb:11.2"
+                image: "mariadb:11.0.2"
                 env:
                     MYSQL_DATABASE: "cylinder"
                     MYSQL_USER: "dba"
