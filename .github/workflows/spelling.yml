@@ -30,4 +30,11 @@ jobs:
             uses: "actions/checkout@v3"
         -
             name: "Search for misspellings"
-            uses: "crate-ci/typos@master"
+            #uses: "crate-ci/typos@master"
+            env:
+                GH_TOKEN: "${{ github.token }}"
+            run: |
+                VERSION="$(gh api /repos/crate-ci/typos/releases/latest --jq '."tag_name"')"
+                wget -qO- "https://github.com/crate-ci/typos/releases/download/v${VERSION}/typos-v${VERSION}-x86_64-unknown-linux-musl.tar.gz" \
+                    | tar -xzv -C "${{ runner.temp }}" ./typos
+                git ls-files -z | xargs -0 -- "${{ runner.temp }}/typos"
