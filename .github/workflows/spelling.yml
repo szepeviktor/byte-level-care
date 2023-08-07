@@ -41,4 +41,7 @@ jobs:
                 )"
                 wget -q -O - "${RELEASE_ASSET_URL}" \
                     | tar -xz -C "${{ runner.temp }}/typos" ./typos
-                git ls-files -z | xargs -0 -t -- "${{ runner.temp }}/typos/typos"
+                git ls-files -z \
+                    | xargs -0 -t -- "${{ runner.temp }}/typos/typos" --format json \
+                    | jq --raw-output '"::warning file=\(.path),line=\(.line_num),col=\(.byte_offset)::\"\(.typo)\" should be \"" + (.corrections // [] | join("\" or \"") + "\".")'
+                # A typo!! "Apropriate"
