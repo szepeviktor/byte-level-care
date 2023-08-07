@@ -34,10 +34,11 @@ jobs:
             env:
                 GH_TOKEN: "${{ github.token }}"
             run: |
-                DOWNLOAD_BASE_URL="https://github.com/crate-ci/typos/releases/download"
-                VERSION="$(gh api /repos/crate-ci/typos/releases/latest --jq '."tag_name"')"
-                printf 'Version: (%s)\n' "${VERSION}"
                 mkdir -p "${{ runner.temp }}/typos"
-                wget -qO- "${DOWNLOAD_BASE_URL}/${VERSION}/typos-${VERSION}-x86_64-unknown-linux-musl.tar.gz" \
-                    | tar -xzv -C "${{ runner.temp }}/typos" ./typos
+                RELEASE_ASSET_URL="$(
+                    gh api /repos/crate-ci/typos/releases/latest \
+                        --jq '."assets"[] | select(."name" | test("^typos-.+-x86_64-unknown-linux-musl\\.tar\\.gz$")) | ."browser_download_url"'
+                )"
+                wget -q -O - "${RELEASE_ASSET_URL}" \
+                    | tar -xz -C "${{ runner.temp }}/typos" ./typos
                 git ls-files -z | xargs -0 -t -- "${{ runner.temp }}/typos/typos"
