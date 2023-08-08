@@ -44,7 +44,7 @@ jobs:
                     echo "${AUTHOR_EMAIL}: ${TOTAL_COUNT}"
                     if [ "${TOTAL_COUNT}" != 1 ]; then
                         echo "::error::Unknown commit email address: ${AUTHOR_EMAIL}"
-                    fi                    
+                    fi
                     test "${TOTAL_COUNT}" = 1
                 }
                 COMMIT_RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
