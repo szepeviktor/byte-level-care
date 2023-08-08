@@ -11,21 +11,21 @@ updates:
 -
     package-ecosystem: "composer"
     directory: "/"
-    schedule:
-        interval: "daily"
     #allow:
     #-
     #    dependency-name: "*"
     #    dependency-type: "production"
+    schedule:
+        interval: "daily"
 -
     package-ecosystem: "npm"
     directory: "/"
-    schedule:
-        interval: "daily"
     #allow:
     #-
     #    dependency-name: "*"
     #    dependency-type: "production"
+    schedule:
+        interval: "daily"
 -
     package-ecosystem: "docker"
     directory: "/"
