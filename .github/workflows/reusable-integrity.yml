@@ -68,7 +68,7 @@ jobs:
             # https://html.spec.whatwg.org/multipage/named-characters.html
             name: "Search for characters outside the printable ASCII range"
             run: |
-                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -e '[^ -~]' \
+                ! LC_ALL=C.UTF-8 git grep --perl-regexp --line-number -I -e '[^ -~]' \
                     -- ${{ inputs.not-printable-ascii-paths }}
                 # Filesystem-based
                 #! LC_ALL=C.UTF-8 find src/ resources/ tests/ -type f -print0 \
