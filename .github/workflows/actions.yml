@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
     job_count:
-        name: "Display job count"
+        name: "Job count"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:
@@ -28,11 +28,11 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3"
         -
-            name: "Display total job count in all workflows"
+            name: "Display total job count"
             run: |
                 Job_count() {
                     git ls-files -z -- '.github/workflows/*.yml' \
-                        | xargs --null -n 1 -- yq '."jobs" | keys | length' \
+                        | xargs --null --max-args=1 -- yq '."jobs" | keys | length' \
                         | paste --serial --delimiters="+" \
                         | bc
                 }

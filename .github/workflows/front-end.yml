@@ -177,7 +177,7 @@ jobs:
             run: "git diff --exit-code"
 
     svg:
-        name: "𝟓 SVG files"
+        name: "𝟓 SVG validity"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         steps:
