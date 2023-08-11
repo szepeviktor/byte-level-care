@@ -91,6 +91,10 @@ jobs:
             run: |
                 ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
                     -- ':!:.github/workflows/reusable-integrity.yml' ':!:.github/workflows/back-end.yml'
+        -   name: "Cloc"
+            run: |
+                wget -nv https://github.com/AlDanial/cloc/releases/download/v1.96/cloc-1.96.pl
+                perl cloc-1.96.pl >>"${GITHUB_STEP_SUMMARY}"
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
