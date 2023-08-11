@@ -92,6 +92,23 @@ jobs:
                 ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
                     -- ':!:.github/workflows/reusable-integrity.yml' ':!:.github/workflows/back-end.yml'
         -
+            name: "Remove blank first lines and multiple blank lines 🐌"
+            run: |
+                git ls-files --cached -z -- ':(exclude,glob)**/yarn.lock' \
+                    | xargs --null -L 1 -- sed -i -e '/./,$!d' -e '/^$/N;/^\n$/D'
+        -
+            name: "Check differences to repository"
+            run: "git diff --exit-code"
+
+    cloc:
+        name: "Lines of Code"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3"
+        -
             name: "Count Lines of Code"
             run: |
                 CLOC_VERSION="1.96"
@@ -105,14 +122,6 @@ jobs:
                     echo '```'
                 } >>"${GITHUB_STEP_SUMMARY}"
                 rm cloc.pl .clocignored
-        -
-            name: "Remove blank first lines and multiple blank lines 🐌"
-            run: |
-                git ls-files --cached -z -- ':(exclude,glob)**/yarn.lock' \
-                    | xargs --null -L 1 -- sed -i -e '/./,$!d' -e '/^$/N;/^\n$/D'
-        -
-            name: "Check differences to repository"
-            run: "git diff --exit-code"
 
     commit:
         name: "Commit"
