@@ -91,16 +91,20 @@ jobs:
             run: |
                 ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
                     -- ':!:.github/workflows/reusable-integrity.yml' ':!:.github/workflows/back-end.yml'
-        -   name: "Cloc"
+        -
+            name: "Count Lines of Code"
             run: |
-                wget -nv https://github.com/AlDanial/cloc/releases/download/v1.96/cloc-1.96.pl
+                CLOC_VERSION="1.96"
+                wget --no-verbose --output-document=cloc.pl \
+                    "https://github.com/AlDanial/cloc/releases/download/v${CLOC_VERSION}/cloc-${CLOC_VERSION}.pl"
                 {
                     echo '```'
-                    perl cloc-1.96.pl --hide-rate --vcs=git \
+                    perl cloc.pl --hide-rate --vcs=git \
                         --exclude-list-file=<(echo "package-lock.json") --ignored=.clocignored
                     cat .clocignored
                     echo '```'
                 } >>"${GITHUB_STEP_SUMMARY}"
+                rm cloc.pl .clocignored
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
