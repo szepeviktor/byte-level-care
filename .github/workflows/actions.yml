@@ -12,7 +12,7 @@ on:  # yamllint disable-line rule:truthy
 permissions: {}  # yamllint disable-line rule:braces
 #permissions: "read-all"
 #permissions:
-#    contents: "read" # Private repositories need read permisson
+#    contents: "read" # Private repositories need read permission
 
 concurrency:
     group: "${{ github.workflow }}-${{ github.ref }}"

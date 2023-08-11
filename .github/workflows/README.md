@@ -42,6 +42,7 @@ jobs:
 - Outdated packages / PHP packages
 - Outdated packages / Node.js packages
 - Shared Integrity / File
+- Shared Integrity / Lines of Code
 - Shared Integrity / Commit
 - Shared Integrity / Git archive
 - Shell script / ShellCheck
