@@ -96,7 +96,9 @@ jobs:
                 wget -nv https://github.com/AlDanial/cloc/releases/download/v1.96/cloc-1.96.pl
                 {
                     echo '```'
-                    perl cloc-1.96.pl --hide-rate --vcs=git --exclude-list-file=<(echo "package-lock.json")
+                    perl cloc-1.96.pl --hide-rate --vcs=git \
+                        --exclude-list-file=<(echo "package-lock.json") --ignored=.clocignored
+                    cat .clocignored
                     echo '```'
                 } >>"${GITHUB_STEP_SUMMARY}"
         -
