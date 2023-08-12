@@ -129,7 +129,8 @@ jobs:
                         --jq '."assets"[] | select(."name" | test("^php-coveralls\\.phar$")) | ."browser_download_url"'
                 )"
                 wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
-                    --no-verbose --output-document="${{ runner.temp }}/php-coveralls/php-coveralls.phar" "${RELEASE_ASSET_URL}"
+                    --no-verbose --output-document="${{ runner.temp }}/php-coveralls/php-coveralls.phar" \
+                    "${RELEASE_ASSET_URL}"
                 php "${{ runner.temp }}/php-coveralls/php-coveralls.phar" --verbose
 
     static_analysis:
