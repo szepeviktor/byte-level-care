@@ -120,6 +120,7 @@ jobs:
         -
             name: "Send coverage to Coveralls"
             env:
+                GH_TOKEN: "${{ github.token }}"
                 COVERALLS_REPO_TOKEN: "${{ github.token }}"
             if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
             run: |
