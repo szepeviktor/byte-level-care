@@ -27,10 +27,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Search for misspellings"
-            #uses: "crate-ci/typos@master"
+            #uses: "crate-ci/typos@v1.16.4"
             env:
                 GH_TOKEN: "${{ github.token }}"
             # yamllint disable rule:line-length

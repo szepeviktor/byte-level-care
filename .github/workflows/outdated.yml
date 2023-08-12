@@ -24,17 +24,17 @@ jobs:
         timeout-minutes: 5
         steps:
         -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3.5.3"
+        -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@v2"
+            uses: "shivammathur/setup-php@2.25.5"
             with:
                 php-version: "8.2"
                 coverage: "none"
         -
-            name: "Checkout repository"
-            uses: "actions/checkout@v3"
-        -
             name: "Install dependencies"
-            uses: "ramsey/composer-install@v2"
+            uses: "ramsey/composer-install@2.2.0"
             with:
                 dependency-versions: "highest"
         -
@@ -48,10 +48,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Set up Node.js"
-            uses: "actions/setup-node@v3"
+            uses: "actions/setup-node@v3.7.0"
             with:
                 node-version: "18"
                 cache: "npm"

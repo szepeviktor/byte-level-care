@@ -44,7 +44,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Check file permissions"
             run: |
@@ -80,7 +80,7 @@ jobs:
             run: "test -f .editorconfig"
         -
             name: "Check adherence to EditorConfig"
-            uses: "greut/eclint-action@v0"
+            uses: "greut/eclint-action@v0.4.0"
         -
             name: "Look for TAB characters in the middle of the line 🐌"
             run: |
@@ -107,7 +107,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Count Lines of Code"
             env:
@@ -135,7 +135,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Search for conflict markers 🐌"
             run: |
@@ -148,7 +148,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Check for ignored files in the index 🐌"
             run: |

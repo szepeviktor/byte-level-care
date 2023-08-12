@@ -35,10 +35,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Check Markdown formatting"
-            uses: "DavidAnson/markdownlint-cli2-action@v11"
+            uses: "DavidAnson/markdownlint-cli2-action@v11.0.0"
             with:
                 globs: "**/*.md"
 
@@ -49,10 +49,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Cache NPM"
-            uses: "actions/cache@v3"
+            uses: "actions/cache@v3.3.1"
             with:
                 path: "~/.npm"
                 key: "${{ runner.os }}-npm-markdown-link-check"

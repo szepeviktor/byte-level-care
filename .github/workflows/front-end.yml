@@ -46,10 +46,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Set up Node.js"
-            uses: "actions/setup-node@v3"
+            uses: "actions/setup-node@v3.7.0"
             with:
                 node-version: "18"
                 check-latest: true
@@ -80,10 +80,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Set up Node.js"
-            uses: "actions/setup-node@v3"
+            uses: "actions/setup-node@v3.7.0"
             with:
                 node-version: "18"
                 cache: "npm"
@@ -103,7 +103,7 @@ jobs:
             continue-on-error: true
         -
             name: "Annotate ESLint Results"
-            uses: "ataylorme/eslint-annotate-action@v2"
+            uses: "ataylorme/eslint-annotate-action@1.2.0"
             with:
                 check-name: "𝕩 ESLint Annotations"
                 repo-token: "${{ github.token }}"
@@ -116,10 +116,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Set up Node.js"
-            uses: "actions/setup-node@v3"
+            uses: "actions/setup-node@v3.7.0"
             with:
                 node-version: "18"
                 cache: "npm"
@@ -148,10 +148,10 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Set up Node.js"
-            uses: "actions/setup-node@v3"
+            uses: "actions/setup-node@v3.7.0"
             with:
                 node-version: "18"
                 cache: "npm"
@@ -183,7 +183,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Validate SVG files"
             uses: "szepeviktor/svg-validator@v1.0.0"

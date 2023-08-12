@@ -26,14 +26,14 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@v2"
+            uses: "shivammathur/setup-php@2.25.5"
             with:
                 php-version: "8.2"
                 coverage: "none"
                 tools: "parallel-lint"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Search for invalid complex curly syntax 🐌"
             run: |
@@ -73,7 +73,7 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@v2"
+            uses: "shivammathur/setup-php@2.25.5"
             with:
                 php-version: "${{ matrix.php-version }}"
         -
@@ -82,10 +82,10 @@ jobs:
                 echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Install dependencies"
-            uses: "ramsey/composer-install@v2"
+            uses: "ramsey/composer-install@2.2.0"
             #env:
             #    COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ github.token }}"}}'
             # yamllint disable-line rule:line-length
@@ -112,7 +112,7 @@ jobs:
         -
             name: "Tests have failed: upload logs"
             if: "${{ failure() }}"
-            uses: "actions/upload-artifact@v3"
+            uses: "actions/upload-artifact@v3.1.2"
             with:
                 path: "storage/logs/"
                 # Prefix with project name (github.repository contains a slash)
@@ -136,13 +136,13 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@v2"
+            uses: "shivammathur/setup-php@2.25.5"
             with:
                 php-version: "8.2"
                 coverage: "none"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Check JSON files"
             run: |
@@ -154,7 +154,7 @@ jobs:
             run: "composer validate --no-interaction --strict"
         -
             name: "Install dependencies"
-            uses: "ramsey/composer-install@v2"
+            uses: "ramsey/composer-install@2.2.0"
             with:
                 dependency-versions: "highest"
         -
@@ -188,17 +188,17 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@v2"
+            uses: "shivammathur/setup-php@2.25.5"
             with:
                 php-version: "8.2"
                 coverage: "none"
                 tools: "phpcs,cs2pr"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3"
+            uses: "actions/checkout@v3.5.3"
         -
             name: "Install dependencies"
-            uses: "ramsey/composer-install@v2"
+            uses: "ramsey/composer-install@2.2.0"
             with:
                 dependency-versions: "highest"
         -
