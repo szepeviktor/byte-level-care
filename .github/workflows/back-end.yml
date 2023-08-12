@@ -123,9 +123,14 @@ jobs:
                 COVERALLS_REPO_TOKEN: "${{ github.token }}"
             if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
             run: |
-                wget --no-verbose \
-                    "https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar"
-                php ./php-coveralls.phar --verbose
+                mkdir -p "${{ runner.temp }}/php-coveralls"
+                RELEASE_ASSET_URL="$(
+                    gh api /repos/php-coveralls/php-coveralls/releases/latest \
+                        --jq '."assets"[] | select(."name" | test("^php-coveralls\\.phar$")) | ."browser_download_url"'
+                )"
+                wget --no-verbose --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
+                    --output-document="${{ runner.temp }}/php-coveralls/php-coveralls.phar" "${RELEASE_ASSET_URL}"
+                php "${{ runner.temp }}/php-coveralls/php-coveralls.phar" --verbose
 
     static_analysis:
         name: "3️⃣ Static Analysis"
