@@ -41,7 +41,8 @@ jobs:
                     gh api /repos/crate-ci/typos/releases/latest \
                         --jq '."assets"[] | select(."name" | test("^typos-.+-x86_64-unknown-linux-musl\\.tar\\.gz$")) | ."browser_download_url"'
                 )"
-                wget -q -O - "${RELEASE_ASSET_URL}" \
+                wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
+                    --quiet --output-document=- "${RELEASE_ASSET_URL}" \
                     | tar -xz -C "${{ runner.temp }}/typos" ./typos
                 "${{ runner.temp }}/typos/typos" --version
                 git ls-files -z \
