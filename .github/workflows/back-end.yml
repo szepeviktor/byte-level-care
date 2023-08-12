@@ -126,7 +126,8 @@ jobs:
             run: |
                 mkdir -p "${{ runner.temp }}/php-coveralls"
                 RELEASE_ASSET_URL="$(
-                    gh api /repos/php-coveralls/php-coveralls/releases/latest \
+                    # v2.6.0
+                    gh api /repos/php-coveralls/php-coveralls/releases/112403613 \
                         --jq '."assets"[] | select(."name" | test("^php-coveralls\\.phar$")) | ."browser_download_url"'
                 )"
                 wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
