@@ -115,7 +115,8 @@ jobs:
             run: |
                 mkdir -p "${{ runner.temp }}/cloc"
                 RELEASE_ASSET_URL="$(
-                    gh api /repos/AlDanial/cloc/releases/latest \
+                    # v1.96
+                    gh api /repos/AlDanial/cloc/releases/86472842 \
                         --jq '."assets"[] | select(."name" | test("^cloc-.+\\.pl$")) | ."browser_download_url"'
                 )"
                 wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
