@@ -1,0 +1,16 @@
+release-assets:
+-
+    repository: "crate-ci/typos"
+    release-page: "https://github.com/crate-ci/typos/releases"
+    workflow: "spelling.yml"
+    job: "typos_check"
+-
+    repository: "php-coveralls/php-coveralls"
+    release-page: "https://github.com/php-coveralls/php-coveralls/releases"
+    workflow: "back-end.yml"
+    job: "unit_tests"
+-
+    repository: "AlDanial/cloc"
+    release-page: "https://github.com/AlDanial/cloc/releases"
+    workflow: "reusable-integrity.yml"
+    job: "cloc"
