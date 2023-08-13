@@ -15,7 +15,7 @@ on:
 jobs:
     call_workflow_integrity:
         name: "Integrity"
-        uses: "szepeviktor/byte-level-care/.github/workflows/integrity.yml@master"
+        uses: "szepeviktor/byte-level-care/.github/workflows/reusable-integrity.yml@master"
 ```
 
 ## List of all jobs
