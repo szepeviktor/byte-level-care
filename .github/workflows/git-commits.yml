@@ -35,6 +35,9 @@ jobs:
                 Check_author() {
                     local AUTHOR_EMAIL="$1"
                     local TOTAL_COUNT
+                    if [ "${AUTHOR_EMAIL#*@}" = users.noreply.github.com ]; then
+                        echo "${AUTHOR_EMAIL}: 1"
+                    fi
                     TOTAL_COUNT="$(
                         gh api search/users \
                             --method GET \
