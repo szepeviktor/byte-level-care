@@ -22,8 +22,6 @@ jobs:
 
 `yq '"- " + ."name" + " / " + ."jobs"[]."name"'`
 
-- Actions / Job count
-- Actions / Actionlint
 - Back-end / 1️⃣ Syntax errors
 - Back-end / 2️⃣ Unit and functional tests
 - Back-end / 3️⃣ Static Analysis
@@ -47,4 +45,6 @@ jobs:
 - Shared Integrity / Git archive
 - Shell script / ShellCheck
 - Spelling / 文A Typos
+- Workflow / Actionlint
+- Workflow / Job count
 - YAML / YAML validity
