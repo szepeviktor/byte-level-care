@@ -30,14 +30,12 @@ jobs:
         -
             name: "Display total job count"
             run: |
-                Job_count() {
+                Jobs() {
                     git ls-files -z -- '.github/workflows/*.yml' \
-                        | xargs --null --max-args=1 -- yq '."jobs" | keys | length' \
-                        | paste --serial --delimiters="+" \
-                        | bc
+                        | xargs --null --max-args=1 -- yq '"- " + ."name" + " / " + ."jobs"[]."name"'
                 }
-                printf ':construction_worker: Total number of jobs: %d' \
-                    "$(Job_count)" \
+                printf ':construction_worker: Job list\n%s' \
+                    "$(Jobs)" \
                     >>"${GITHUB_STEP_SUMMARY}"
 
     actionlint:
