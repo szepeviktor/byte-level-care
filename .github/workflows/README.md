@@ -45,6 +45,6 @@ jobs:
 - Shared Integrity / Git archive
 - Shell script / ShellCheck
 - Spelling / 文A Typos
-- Workflow / Actionlint
 - Workflow / Job count
+- Workflow / Actionlint
 - YAML / YAML validity
