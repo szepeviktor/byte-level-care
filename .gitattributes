@@ -10,7 +10,7 @@
 /.typos.toml export-ignore
 /Dockerfile export-ignore
 /markdown-link-check.json export-ignore
-/package-lock.json export-ignore
+/package-lock.json export-ignore linguist-generated
 /phpunit.xml export-ignore
-/yarn.lock export-ignore
+/yarn.lock export-ignore linguist-generated
 /tests/ export-ignore
