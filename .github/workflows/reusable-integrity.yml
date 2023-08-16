@@ -94,8 +94,8 @@ jobs:
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
-                # Exclude files with linguist-generated attribute set
-                git ls-files --cached \
+                # Exclude binary files, empty files and ones with linguist-generated attribute set
+                git grep --files-with-matches -I -e '.' \
                     | git check-attr --stdin --all \
                     | sed -n -e 's#^\(.\+\): linguist-generated: set$#":!:\1"#p' \
                     | xargs -L 1 -- git ls-files --cached -z -- \
