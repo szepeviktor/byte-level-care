@@ -2,7 +2,7 @@
 
 ## How to call these from another repository?
 
-You can call any of these workflows that contain `on: workflow_call`.
+You can call any of these workflows that contain [`on: workflow_call`][search-workflow-call].
 
 ```yaml
 name: "My Workflow"
@@ -45,6 +45,8 @@ jobs:
 - Shared Integrity / Git archive
 - Shell script / ShellCheck
 - Spelling / 文A Typos
-- Workflow / Actionlint
 - Workflow / Job count
+- Workflow / Actionlint
 - YAML / YAML validity
+
+[search-workflow-call]: https://github.com/search?q=repo%3Aszepeviktor%2Fbyte-level-care+workflow_call+language%3AYAML&type=code&l=YAML
