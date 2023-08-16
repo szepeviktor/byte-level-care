@@ -94,7 +94,8 @@ jobs:
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
-                git ls-files --cached -z -- ':(exclude,glob)**/yarn.lock' \
+                git ls-files --cached -z \
+                    -- ':(exclude,glob)**/yarn.lock' ':!:*.min.*' ':!:*.png' ':!:*.jpg' \
                     | xargs --null -L 1 -- sed -i -e '/./,$!d' -e '/^$/N;/^\n$/D'
         -
             name: "Check differences to repository"
