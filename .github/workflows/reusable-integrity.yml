@@ -84,12 +84,12 @@ jobs:
         -
             name: "Look for TAB characters in the middle of the line 🐌"
             run: |
-                ! git grep --perl-regexp --line-number -I '^(?!//)[^\t]+\t'
+                ! git grep --perl-regexp --line-number -I -e '^(?!//)[^\t]+\t'
         -
             # Move TODO-s into GitHub issues!
             name: "Search for TODO-s and FIXME-s 🐌"
             run: |
-                ! git grep --extended-regexp --ignore-case '\b(TODO|FIXME)\b' \
+                ! git grep --extended-regexp --ignore-case -I -e '\b(TODO|FIXME)\b' \
                     -- ':!:.github/workflows/reusable-integrity.yml' ':!:.github/workflows/back-end.yml'
         -
             name: "Remove blank first lines and multiple blank lines 🐌"
