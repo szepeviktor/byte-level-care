@@ -43,7 +43,7 @@ jobs:
                 globs: "**/*.md"
 
     markdown_link:
-        name: "Markdown link"
+        name: "Markdown links"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 10
         steps:
