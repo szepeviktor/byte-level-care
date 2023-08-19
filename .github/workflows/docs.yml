@@ -54,5 +54,5 @@ jobs:
             name: "Run Lychee"
             uses: "lycheeverse/lychee-action@ec7614d7605b47efb08dc370f6d0a71884cba944"  # v1.8.0
             with:
-                args: "--exclude '^https://twitter\\.com/'"
+                args: "--verbose --no-progress --exclude '^https://twitter\\.com/' './**/*.md' './**/*.html' './**/*.rst'"
                 fail: true
