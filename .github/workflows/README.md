@@ -28,7 +28,7 @@ jobs:
 - Back-end / 4️⃣ Coding Standards
 - Dockerfile / 🐳 Hadolint
 - Docs / Markdown format
-- Docs / Markdown links
+- Docs / Links
 - Front-end / 𝟏 JavaScript Syntax Errors
 - Front-end / 𝟐 JavaScript Coding Standards
 - Front-end / 𝟑 Sassy CSS Coding Standards

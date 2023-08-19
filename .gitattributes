@@ -4,12 +4,12 @@
 /.editorconfig export-ignore
 /.eslintrc.json export-ignore
 /.hadolint.yaml export-ignore
+/.lycheeignore export-ignore
 /.markdownlint-cli2.yaml export-ignore
 /.yamllint.yml export-ignore
 /.stylelintrc.json export-ignore
 /.typos.toml export-ignore
 /Dockerfile export-ignore
-/markdown-link-check.json export-ignore
 /package-lock.json export-ignore linguist-generated
 /phpunit.xml export-ignore
 /yarn.lock export-ignore linguist-generated

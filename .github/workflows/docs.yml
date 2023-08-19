@@ -42,8 +42,8 @@ jobs:
             with:
                 globs: "**/*.md"
 
-    markdown_link:
-        name: "Markdown links"
+    links:
+        name: "Links"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 10
         steps:
@@ -51,16 +51,8 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3.5.3"
         -
-            name: "Cache NPM"
-            uses: "actions/cache@v3.3.1"
+            name: "Run Lychee"
+            uses: "lycheeverse/lychee-action@v1.8.0"
             with:
-                path: "~/.npm"
-                key: "${{ runner.os }}-npm-markdown-link-check"
-        -
-            name: "Install markdown-link-check"
-            run: "npm install --global markdown-link-check"
-        -
-            name: "Check Markdown links"
-            run: |
-                git ls-files -z -- '*.md' \
-                    | xargs -0 -- npm exec -- markdown-link-check -p -c markdown-link-check.json
+                output: "${{ runner.temp }}/lychee/out.md"
+                fail: true

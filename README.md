@@ -11,7 +11,7 @@ How to live with zero problems through Total Control.
 -   Know every piece of software on your server and its author;
     uninstall anything that is not needed
 -   Monitor every process on your server with functional tests, not just pings
--   Run [QA tools](.github/workflows) on every byte of your git repositories
+-   Run [QA tools](./.github/workflows) on every byte of your git repositories
 -   Know your dependencies (packages) and their authors
 -   Deploy 100% automatically
 -   Run production environments without human intervention
