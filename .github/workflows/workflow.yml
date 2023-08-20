@@ -47,7 +47,7 @@ jobs:
         steps:
         -
             name: "Dump information about the workflow run"
-            run: "${{ fromJSON(github) }}"
+            run: "${{ toJSON(github) }}"
 
     actionlint:
         name: "Actionlint"
