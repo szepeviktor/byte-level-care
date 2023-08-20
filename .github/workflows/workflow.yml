@@ -40,6 +40,15 @@ jobs:
                     "$(Job_count)" \
                     >>"${GITHUB_STEP_SUMMARY}"
 
+    run_context:
+        name: "Run context"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Dump information about the workflow run"
+            run: "${{ fromJSON(github) }}"
+
     actionlint:
         name: "Actionlint"
         runs-on: "ubuntu-22.04"
