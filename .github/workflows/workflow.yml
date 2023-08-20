@@ -49,7 +49,7 @@ jobs:
             name: "Dump information about the workflow run"
             run: |
                 printf 'github = '
-                jq --indent 4 --raw-output '.' <<"GITHUB__CONTEXT"
+                jq --indent 4 --raw-output --color-output '.' <<"GITHUB__CONTEXT"
                 ${{ toJSON(github) }}
                 GITHUB__CONTEXT
 
