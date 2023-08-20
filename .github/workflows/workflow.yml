@@ -47,7 +47,11 @@ jobs:
         steps:
         -
             name: "Dump information about the workflow run"
-            run: "${{ toJSON(github) }}"
+            run: |
+                printf 'github = '
+                cat <<"GITHUB__CONTEXT"
+                ${{ toJSON(github) }}
+                GITHUB__CONTEXT
 
     actionlint:
         name: "Actionlint"
