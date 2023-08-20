@@ -46,6 +46,7 @@ jobs:
 - Shell script / ShellCheck
 - Spelling / 文A Typos
 - Workflow / Job count
+- Workflow / Run context
 - Workflow / Actionlint
 - YAML / YAML validity
 
