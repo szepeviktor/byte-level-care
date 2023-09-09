@@ -126,10 +126,10 @@ jobs:
                 wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
                     --no-verbose --output-document="${{ runner.temp }}/cloc/cloc" "${RELEASE_ASSET_URL}"
                 {
-                    printf '%s\n' LICENSE package-lock.json >"${{ runner.temp }}/cloc/exclude-list"
+                    git ls-files -- ':!:LICENSE' ':!:package-lock.json' >"${{ runner.temp }}/cloc/include-list"
                     echo '```'
-                    perl "${{ runner.temp }}/cloc/cloc" --hide-rate --vcs=git \
-                        --exclude-list-file="${{ runner.temp }}/cloc/exclude-list" \
+                    perl "${{ runner.temp }}/cloc/cloc" --hide-rate \
+                        --list-file="${{ runner.temp }}/cloc/include-list" \
                         --ignored="${{ runner.temp }}/cloc/.clocignored"
                     cat "${{ runner.temp }}/cloc/.clocignored"
                     echo '```'
