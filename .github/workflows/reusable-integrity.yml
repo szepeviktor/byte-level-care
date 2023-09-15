@@ -86,6 +86,12 @@ jobs:
             run: |
                 ! git grep --perl-regexp --line-number -I -e '^(?!//)[^\t]+\t'
         -
+            name: "Look for multiple space characters in the middle of the line 🐌"
+            run: |
+                # Exclude docblocks: grep -v -F '    * @'
+                ! git grep --perl-regexp --line-number -I -e '(?!^#)\S\s\s' \
+                    -- ':!:*.md' ':!:.github/**.yml'
+        -
             # Move TODO-s into GitHub issues!
             name: "Search for TODO-s and FIXME-s 🐌"
             run: |
