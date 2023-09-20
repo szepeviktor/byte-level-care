@@ -3,7 +3,7 @@
 [![theories](https://img.shields.io/badge/more-theories-purple)](https://github.com/stars/szepeviktor/lists/theory)
 [![Tweet](https://img.shields.io/badge/Tweet-share-d5d5d5?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Living%20with%20zero%20problems%20while%20developing%20your%20web%20application&url=https%3A%2F%2Fgithub.com%2Fszepeviktor%2Fbyte-level-care)
 
-How to live with zero problems through Total Control.
+How to live with zero problems through Total Control. L.
 
 -   Analyze service providers before you choose one
 -   Monitor your service providers
