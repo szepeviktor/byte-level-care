@@ -44,7 +44,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3.6.0"
+            uses: "actions/checkout@v4.1.0"
         -
             name: "Check file permissions"
             run: |
@@ -117,7 +117,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3.6.0"
+            uses: "actions/checkout@v4.1.0"
         -
             name: "Count Lines of Code"
             env:
@@ -148,7 +148,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3.6.0"
+            uses: "actions/checkout@v4.1.0"
         -
             name: "Search for conflict markers 🐌"
             run: |
@@ -161,7 +161,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v3.6.0"
+            uses: "actions/checkout@v4.1.0"
         -
             name: "Check for ignored files in the index 🐌"
             run: |
