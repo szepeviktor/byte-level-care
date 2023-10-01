@@ -102,10 +102,10 @@ jobs:
             name: "Remove blank first lines and multiple blank lines 🐌"
             run: |
                 # Exclude binary files, empty files and ones with linguist-generated attribute set
-                git grep --files-with-matches -I -e '.' \
+                git ls-files --cached \
                     | git check-attr --stdin --all \
                     | sed -n -e 's#^\(.\+\): linguist-generated: set$#":!:\1"#p' \
-                    | xargs -- git ls-files --cached -z -- \
+                    | xargs -- git grep --null --files-with-matches -I -e '.' -- \
                     | xargs --null -n 1 -- sed -i -e '/./,$!d' -e '/^$/N;/^\n$/D'
         -
             name: "Check differences to repository"
