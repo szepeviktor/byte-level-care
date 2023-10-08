@@ -46,6 +46,12 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
         -
+            name: "Check file names"
+            run: |
+                git ls-tree -r -t -z --name-only HEAD \
+                    | xargs -0 -n 1 -- basename \
+                    | grep -P '[^-.0-9A-Z_a-z]'
+        -
             name: "Check file permissions"
             run: |
                 test "$(
