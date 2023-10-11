@@ -17,7 +17,7 @@ How to live with zero problems through Total Control.
 -   Run production environments without human intervention
 -   Be conservative with software versions when upgrading
 
-See [Special infrastructure for web applications][href-infrastructure]
+See [Special infrastructure for web applications][href-infrastructure] this.
 
 ## Support my work
 
