@@ -86,7 +86,7 @@ jobs:
             run: "test -f .editorconfig"
         -
             name: "Check adherence to EditorConfig"
-            uses: "greut/eclint-action@v0.4.0"
+            uses: "greut/eclint-action@v0.5.0"
         -
             name: "Look for TAB characters in the middle of the line 🐌"
             run: |
