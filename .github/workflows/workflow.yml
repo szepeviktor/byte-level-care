@@ -46,7 +46,7 @@ jobs:
         timeout-minutes: 1
         steps:
         -
-            name: "Dump information about the workflow run"
+            name: "github.event.pull_request.head.repo.owner.login"
             run: |
                 printf 'github = '
                 jq --indent 4 --raw-output --color-output '.' <<"GITHUB__CONTEXT"
