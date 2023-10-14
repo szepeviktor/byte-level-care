@@ -70,3 +70,25 @@ jobs:
         -
             name: "Check for outdated production packages"
             run: "npm outdated --omit=dev"
+
+    AlDanial_cloc:
+        name: "AlDanial/cloc"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 5
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3.6.0"
+        -
+            name: "Show available updates"
+            env:
+                GH_TOKEN: "${{ github.token }}"
+            run: |
+                CURRENT_VERSION="$(
+                    cat .github/workflows/reusable-integrity.yml \
+                        | yq -r '."jobs".*."steps"[] | select(."run" | contains("gh api /repos")) | ."run"' \
+                        | sed -n -e 's/^\s*# \(v\S\+\)$/\1/p'
+                )"
+                LATEST_VERSION="$(gh api /repos/AlDanial/cloc/releases/latest --jq '."tag_name"')"
+                echo "LATEST=${LATEST_VERSION}"
+                test "${CURRENT_VERSION}" = "${LATEST_VERSION}"
