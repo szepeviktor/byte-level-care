@@ -90,4 +90,5 @@ jobs:
                         | sed -n -e 's/^\s*# \(v\S\+\)$/\1/p'
                 )"
                 LATEST_VERSION="$(gh api /repos/AlDanial/cloc/releases/latest --jq '."tag_name"')"
+                echo "LATEST=${LATEST_VERSION}"
                 test "${CURRENT_VERSION}" = "${LATEST_VERSION}"
