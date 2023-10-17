@@ -46,4 +46,5 @@ jobs:
                     --check-hidden \
                     --check-filenames \
                     --builtin=clear,rare,informal,usage,code,names \
+                    --skip=package-lock.json \
                     --ignore-words-list=master
