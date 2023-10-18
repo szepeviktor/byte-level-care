@@ -28,29 +28,29 @@ jobs:
         -
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
-        #-
-        #    name: "Cache pip"
-        #    uses: "actions/cache@v3"
-        #    with:
-        #        path: "~/.cache/pip"
-        #        key: "${{ runner.os }}-pip-codespell"
-        #-
-        #    name: "Install codespell"
-        #    run: |
-        #        pip install --user 'codespell>=2.2'
+        -
+            name: "Cache pip"
+            uses: "actions/cache@v3"
+            with:
+                path: "~/.cache/pip"
+                key: "${{ runner.os }}-pip-codespell"
+        -
+            name: "Install codespell"
+            run: |
+                pip install --user 'codespell>=2.2'
         -
             name: "Search for misspellings"
-            uses: "codespell-project/actions-codespell@v2.0"
-            with:
-                skip: "./.git,package-lock.json"
-                check_hidden: true
-                check_filenames: true
-                builtin: "clear,rare,informal,usage,code,names"
-                ignore_words_list: "master"
-            #run: |
-            #    "$(python -m site --user-base)/bin/codespell" \
-            #        --skip="./.git,package-lock.json" \
-            #        --check-hidden \
-            #        --check-filenames \
-            #        --builtin="clear,rare,informal,usage,code,names" \
-            #        --ignore-words-list="master"
+            #uses: "codespell-project/actions-codespell@v2.0"
+            #with:
+            #    skip: "./.git,package-lock.json"
+            #    check_hidden: true
+            #    check_filenames: true
+            #    builtin: "clear,rare,informal,usage,code,names"
+            #    ignore_words_list: "master"
+            run: |
+                "$(python -m site --user-base)/bin/codespell" \
+                    --skip="./.git,package-lock.json" \
+                    --check-hidden \
+                    --check-filenames \
+                    --builtin="clear,rare,informal,usage,code,names" \
+                    --ignore-words-list="master"
