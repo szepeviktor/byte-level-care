@@ -20,7 +20,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    typos_check:
+    codespell_check:
         name: "文A codespell"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
