@@ -49,15 +49,16 @@ jobs:
             name: "Check file names"
             run: |
                 ! git ls-tree -r -t -z --name-only HEAD \
-                    | xargs -0 -n 1 -- basename \
-                    | grep -P '[^-.0-9A-Z_a-z]'
+                    | xargs --null --max-args=1 -- basename \
+                    | grep --perl-regexp '[^-.0-9A-Z_a-z]'
         -
             name: "Check file permissions"
             run: |
                 test "$(
                     git ls-files --stage \
-                        | grep -v '^100644' \
-                        | cut -c '51-'
+                        | grep --invert-match '^100644' \
+                        | cut --characters='51-' \
+                        | paste --serial --delimiters=' '
                 )" = "${{ inputs.executables }}"
                 # Filesystem-based
                 #test "$(
