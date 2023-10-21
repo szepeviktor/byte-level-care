@@ -68,6 +68,7 @@ jobs:
                 #)" = "${{ inputs.executables }}"
         -
             # https://github.com/greut/eclint/issues/6
+            # Remove: sed -i -e '1s#^\xEF\xBB\xBF##'
             name: "Check for byte order mark (BOM)"
             run: |
                 ! git grep --perl-regexp -I -e '^\xEF\xBB\xBF'
