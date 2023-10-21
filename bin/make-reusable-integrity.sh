@@ -19,10 +19,14 @@ EOF
 
 yq -r '."jobs".*."steps"[] | select(."run") | ."run"' "${SOURCE}" >>"${TARGET}"
 
-sed -i -e "s#\${{ inputs\.executables }}#$(yq -r '."on"."workflow_call"."inputs"."executables"."default"' "${SOURCE}")#g" "${TARGET}"
-sed -i -e "s#\${{ inputs\.not-printable-ascii-paths }}#$(yq -r '."on"."workflow_call"."inputs"."not-printable-ascii-paths"."default"' "${SOURCE}")#g" "${TARGET}"
-sed -i -e "s#\${{ inputs\.export-excludes }}#$(yq -r '."on"."workflow_call"."inputs"."export-excludes"."default"' "${SOURCE}")#g" "${TARGET}"
-sed -i -e "s#\${{ inputs\.exported-paths }}#$(yq -r '."on"."workflow_call"."inputs"."exported-paths"."default"' "${SOURCE}")#g" "${TARGET}"
+DEFAULT_VALUE="$(yq -r '."on"."workflow_call"."inputs"."executables"."default"' "${SOURCE}")"
+sed -i -e "s#\${{ inputs\.executables }}#${DEFAULT_VALUE}#g" "${TARGET}"
+DEFAULT_VALUE="$(yq -r '."on"."workflow_call"."inputs"."not-printable-ascii-paths"."default"' "${SOURCE}")"
+sed -i -e "s#\${{ inputs\.not-printable-ascii-paths }}#${DEFAULT_VALUE}#g" "${TARGET}"
+DEFAULT_VALUE="$(yq -r '."on"."workflow_call"."inputs"."export-excludes"."default"' "${SOURCE}")"
+sed -i -e "s#\${{ inputs\.export-excludes }}#${DEFAULT_VALUE}#g" "${TARGET}"
+DEFAULT_VALUE="$(yq -r '."on"."workflow_call"."inputs"."exported-paths"."default"' "${SOURCE}")"
+sed -i -e "s#\${{ inputs\.exported-paths }}#${DEFAULT_VALUE}#g" "${TARGET}"
 
 sed -i -e "s#\${{ runner\.temp }}#./tmp#g" "${TARGET}"
 sed -i -e "s#test -f \.editorconfig#&\\neclint#g" "${TARGET}"

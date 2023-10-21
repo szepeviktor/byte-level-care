@@ -30,6 +30,7 @@ jobs:
                 resources/
                 tests/
             export-excludes: >-
+                --exclude="bin" --exclude="bin/*"
                 --exclude="src" --exclude="src/*"
                 --exclude="resources" --exclude="resources/*"
             exported-paths: >-
