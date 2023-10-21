@@ -23,6 +23,8 @@ jobs:
         name: "Integrity"
         uses: "./.github/workflows/reusable-integrity.yml"
         with:
+            executables: >-
+                bin/make-reusable-integrity.sh
             not-printable-ascii-paths: >-
                 src/
                 resources/
