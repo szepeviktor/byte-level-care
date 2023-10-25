@@ -30,7 +30,7 @@ jobs:
             uses: "actions/checkout@v3.6.0"
         -
             name: "Search for misspellings"
-            #uses: "crate-ci/typos@v1.16.4"
+            #uses: "crate-ci/typos@v1.16.20"
             env:
                 GH_TOKEN: "${{ github.token }}"
             # yamllint disable rule:line-length
@@ -46,5 +46,5 @@ jobs:
                     | tar -xz -C "${{ runner.temp }}/typos" ./typos
                 "${{ runner.temp }}/typos/typos" --version
                 git grep --files-with-matches --null -I -e '.' \
-                    | xargs -0 -t -- "${{ runner.temp }}/typos/typos" --format json \
+                    | xargs --null --verbose -- "${{ runner.temp }}/typos/typos" --format json \
                     | jq --raw-output '"::warning file=\(.path),line=\(.line_num),col=\(.byte_offset)::\"\(.typo)\" should be \"" + (.corrections // [] | join("\" or \"") + "\".")'

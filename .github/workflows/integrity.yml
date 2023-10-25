@@ -26,6 +26,7 @@ jobs:
             executables: >-
                 bin/make-reusable-integrity.sh
             not-printable-ascii-paths: >-
+                bin/
                 src/
                 resources/
                 tests/
