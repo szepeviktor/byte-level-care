@@ -5,6 +5,13 @@
 
 How to live with zero problems through Total Control.
 
+```yml filename="serverless.yml"
+provider:
+    # ...
+    environment:
+        DATABASE_URL: ${ssm:/my-app/database-url}
+```
+
 -   Analyze service providers before you choose one
 -   Monitor your service providers
 -   Collaborate closely with your service providers
