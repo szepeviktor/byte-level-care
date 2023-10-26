@@ -5,7 +5,7 @@
 
 How to live with zero problems through Total Control.
 
-```yml filename="serverless.yml"
+```yml [serverless.yml]
 provider:
     # ...
     environment:
