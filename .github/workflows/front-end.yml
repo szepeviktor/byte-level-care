@@ -71,6 +71,8 @@ jobs:
 
     js_coding_standards:
         name: "𝟐 JavaScript Coding Standards"
+        needs:
+        - "js_syntax_errors"
         permissions:
             checks: "write"
             contents: "read"
@@ -140,7 +142,6 @@ jobs:
     build:
         name: "𝟒 Build"
         needs:
-        - "js_syntax_errors"
         - "js_coding_standards"
         - "scss_coding_standards"
         runs-on: "ubuntu-22.04"
