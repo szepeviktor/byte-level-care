@@ -31,11 +31,12 @@ jobs:
                 resources/
                 tests/
             export-excludes: >-
-                --exclude="bin" --exclude="bin/*"
-                --exclude="src" --exclude="src/*"
-                --exclude="resources" --exclude="resources/*"
+                --exclude="*/*"
             exported-paths: >-
                 LICENSE
                 README.md
+                bin/
                 composer.json
                 package.json
+                resources/
+                src/
