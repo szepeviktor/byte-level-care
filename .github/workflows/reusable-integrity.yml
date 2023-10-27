@@ -19,12 +19,12 @@ on:  # yamllint disable-line rule:truthy
             export-excludes:
                 description: "List of the expected exported directories"
                 type: "string"
-                default: "--exclude='src' --exclude='src/*'"
+                default: "--exclude='*/*'"
                 required: false
             exported-paths:
                 description: "List of the expected exported files"
                 type: "string"
-                default: "LICENSE README.md composer.json"
+                default: "LICENSE README.md composer.json src/"
                 required: false
 
 permissions: {}  # yamllint disable-line rule:braces
