@@ -71,6 +71,8 @@ jobs:
 
     js_coding_standards:
         name: "𝟐 JavaScript Coding Standards"
+        needs:
+        - "js_syntax_errors"
         permissions:
             checks: "write"
             contents: "read"
