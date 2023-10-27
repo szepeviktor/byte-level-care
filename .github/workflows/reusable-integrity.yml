@@ -17,12 +17,12 @@ on:  # yamllint disable-line rule:truthy
                 default: "src/ tests/"
                 required: false
             export-excludes:
-                description: "List of the expected exported directories"
+                description: "List of excluded exported paths"
                 type: "string"
                 default: "--exclude='*/*'"
                 required: false
             exported-paths:
-                description: "List of the expected exported files"
+                description: "List of expected exported paths"
                 type: "string"
                 default: "LICENSE README.md composer.json src/"
                 required: false
