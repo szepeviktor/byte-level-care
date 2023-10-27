@@ -139,11 +139,26 @@ jobs:
             run: "npm run scss:cs -- --formatter github"
             #run: "yarn run scss:cs --formatter github"
 
+    svg:
+        name: "𝟒 SVG validity"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3.6.0"
+        -
+            name: "Validate SVG files"
+            uses: "szepeviktor/svg-validator@v1.0.0"
+            with:
+                svg_path: "public/**/*.svg"
+
     build:
-        name: "𝟒 Build"
+        name: "𝟓 Build"
         needs:
         - "js_coding_standards"
         - "scss_coding_standards"
+        - "svg"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 5
         steps:
@@ -176,20 +191,6 @@ jobs:
         -
             name: "Check differences to repository"
             run: "git diff --exit-code"
-
-    svg:
-        name: "𝟓 SVG validity"
-        runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
-        steps:
-        -
-            name: "Checkout repository"
-            uses: "actions/checkout@v3.6.0"
-        -
-            name: "Validate SVG files"
-            uses: "szepeviktor/svg-validator@v1.0.0"
-            with:
-                svg_path: "public/**/*.svg"
 
 # Job numbers: https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols
 # JavaScript documentation: https://jsdoc.app/ https://www.npmjs.com/package/eslint-plugin-jsdoc
