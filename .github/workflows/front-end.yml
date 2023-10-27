@@ -142,7 +142,6 @@ jobs:
     build:
         name: "𝟒 Build"
         needs:
-        - "js_syntax_errors"
         - "js_coding_standards"
         - "scss_coding_standards"
         runs-on: "ubuntu-22.04"
