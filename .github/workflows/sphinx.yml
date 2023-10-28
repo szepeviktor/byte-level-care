@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Sphinx"
+
+on:  # yamllint disable-line rule:truthy
+    pull_request:
+        paths:
+        - "**/*.rst"
+    push:
+        branches:
+        - "master"
+        paths:
+        - "**/*.rst"
+    workflow_call: null
+# Add [skip ci] to commit message to skip CI.
+
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read" # Private repositories need read permission
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    sphinx:
+        name: "Sphinx reStructuredText validity"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3.6.0"
+        -
+            name: "Cache pip"
+            uses: "actions/cache@v3.3.1"
+            with:
+                path: "~/.cache/pip"
+                key: "${{ runner.os }}-pip-sphinx-lint"
+        -
+            name: "Install sphinx-lint"
+            run: |
+                pip install --user sphinx-lint
+        -
+            name: "Check Sphinx document sources"
+            run: |
+                git ls-files --cached -z -- '*.rst' \
+                    | xargs --null -- python -m sphinxlint --enable all --max-line-length 120
