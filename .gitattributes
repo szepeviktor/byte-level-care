@@ -1,5 +1,5 @@
 /.github/ export-ignore
-/.github/workflows/*.yml linguist-vendored=false
+/.github/workflows/*.yml linguist-vendored=false linguist-detectable
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /.editorconfig export-ignore
