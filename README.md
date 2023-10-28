@@ -74,7 +74,7 @@ You find a complete CI workflow in [this repository](.github/workflows).
 -   Measure code coverage
 -   Check route methods (controllers of routes)
 -   Check list of distributed files
--   Check spelling: Codespell
+-   Check spelling: Typos
 -   Custom checks and warnings
 -   Display logs in CI output or upload logs as artifacts
 -   Start CD by SSH-ing to own server
