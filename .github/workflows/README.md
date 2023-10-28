@@ -18,6 +18,8 @@ jobs:
         uses: "szepeviktor/byte-level-care/.github/workflows/reusable-integrity.yml@master"
 ```
 
+[search-workflow-call]: https://github.com/search?q=repo%3Aszepeviktor%2Fbyte-level-care+workflow_call+language%3AYAML&type=code&l=YAML
+
 ## List of all jobs
 
 `yq '"- " + ."name" + " / " + ."jobs"[]."name"'`
@@ -32,22 +34,22 @@ jobs:
 - Front-end / 𝟏 JavaScript Syntax Errors
 - Front-end / 𝟐 JavaScript Coding Standards
 - Front-end / 𝟑 Sassy CSS Coding Standards
-- Front-end / 𝟒 Build
-- Front-end / 𝟓 SVG validity
+- Front-end / 𝟒 SVG validity
+- Front-end / 𝟓 Build
 - Git commits / Commit author
 - Git tags / Tag without new commit
 - Integrity / Integrity
 - Outdated packages / PHP packages
 - Outdated packages / Node.js packages
+- Outdated packages / AlDanial/cloc
 - Shared Integrity / File
 - Shared Integrity / Lines of Code
 - Shared Integrity / Commit
 - Shared Integrity / Git archive
 - Shell script / ShellCheck
 - Spelling / 文A Typos
+- Sphinx / Sphinx reStructuredText validity
 - Workflow / Job count
 - Workflow / Run context
 - Workflow / Actionlint
 - YAML / YAML validity
-
-[search-workflow-call]: https://github.com/search?q=repo%3Aszepeviktor%2Fbyte-level-care+workflow_call+language%3AYAML&type=code&l=YAML
