@@ -31,7 +31,7 @@ jobs:
             name: "Display total job count"
             run: |
                 Job_count() {
-                    git ls-files -z -- '.github/workflows/*.yml' \
+                    git ls-files --cached -z -- '.github/workflows/*.yml' \
                         | xargs --null --max-args=1 -- yq '."jobs" | keys | length' \
                         | paste --serial --delimiters="+" \
                         | bc
