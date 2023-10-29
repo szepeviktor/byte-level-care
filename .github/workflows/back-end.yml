@@ -30,7 +30,7 @@ jobs:
             with:
                 php-version: "8.2"
                 coverage: "none"
-                tools: "parallel-lint"
+                tools: "php-cs-fixer:v3, composer:v2"
         -
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
