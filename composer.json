@@ -9,8 +9,13 @@
     "require": {
         "php": "~8.2.6",
         "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
         "ext-mbstring": "*",
+        "ext-redis": "*",
         "ext-xml": "*",
+        "ext-zip": "*",
         "composer-plugin-api": "^2.2"
     },
     "require-dev": {
