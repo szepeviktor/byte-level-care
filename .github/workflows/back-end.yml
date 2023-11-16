@@ -44,7 +44,7 @@ jobs:
             # @TODO Check template files for syntax errors
 
     unit_tests:
-        name: "2️⃣ Unit and functional tests"
+        name: "2️⃣ Unit and functional tests / ${{ matrix.dependencies }}"
         needs:
         - "syntax_errors"
         strategy:
