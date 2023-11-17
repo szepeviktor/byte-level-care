@@ -5,7 +5,7 @@
 
 > [!NOTE]
 > Currently there are 14 _GitHub Actions_
-> [workflows](https://github.com/szepeviktor/byte-level-care/blob/master/.github/workflows)
+> [workflows](.github/workflows)
 > in the repository.
 
 How to live with zero problems through Total Control.
