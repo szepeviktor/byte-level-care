@@ -2,5 +2,8 @@
     "parserOptions": {
         "ecmaVersion": 2015,
         "sourceType": "script"
-    }
+    },
+    "plugins": [
+        "@stylistic/js"
+    ]
 }
