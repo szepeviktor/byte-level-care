@@ -3,7 +3,7 @@
         "ecmaVersion": 2015,
         "sourceType": "script"
     },
-    "plugins": [
-        "@stylistic/js"
+    "extends": [
+        "eslint:all"
     ]
 }
