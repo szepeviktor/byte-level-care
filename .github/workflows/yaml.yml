@@ -39,6 +39,9 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
         -
+            name: "Display Python version"
+            run: "python -V"
+        -
             name: "Cache pip"
             uses: "actions/cache@v3.3.1"
             with:
