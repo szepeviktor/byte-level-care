@@ -56,7 +56,9 @@ jobs:
             name: "Dump information in dot notation"
             run: |
                 printf 'github = '
-                jq --indent 4 --raw-output --color-output '[paths(scalars) as $p | {"key":$p | join("."), "value":getpath($p)}] | from_entries' <<"GITHUB__CONTEXT"
+                jq --indent 4 --raw-output --color-output \
+                    '[paths(scalars) as $p | {"key":$p | join("."), "value":getpath($p)}] | from_entries' \
+                    <<"GITHUB__CONTEXT"
                 ${{ toJSON(github) }}
                 GITHUB__CONTEXT
 
