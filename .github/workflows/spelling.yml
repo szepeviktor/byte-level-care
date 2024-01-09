@@ -29,9 +29,9 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
         -
-            name: "Search for misspellings"
+            name: "xcode"
             run: |
                 xcodebuild -showsdks; echo ___
                 xcrun --show-sdk-version; echo ___
-                xcrun --sdk macosx14.2 --show-sdk-path; echo ___
-                xcrun --sdk macosx14.2 --show-sdk-platform-version; echo ___
+                xcrun --sdk macosx13.3 --show-sdk-path; echo ___
+                xcrun --sdk macosx13.3 --show-sdk-platform-version; echo ___
