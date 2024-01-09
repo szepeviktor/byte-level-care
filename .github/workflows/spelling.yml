@@ -29,14 +29,15 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v3.6.0"
         -
-            name: Determine OS release
-            id: runner_os
+            name: "Determine OS release"
+            id: "runner-os"
             run: |
+                nodejs -e 'console.log(os.release());'
                 echo "release=$(nodejs -e 'console.log(os.release());')" >>"${GITHUB_OUTPUT}"
         -
-            name: Showww
+            name: "Showww"
             run: |
-                echo "${{ steps.runner_os.outputs.release }}"
+                echo "${{ steps.runner-os.outputs.release }}"
         -
             name: "Search for misspellings"
             #uses: "crate-ci/typos@v1.16.20"
