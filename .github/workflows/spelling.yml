@@ -22,7 +22,7 @@ concurrency:
 jobs:
     typos_check:
         name: "文A Typos"
-        runs-on: "macos-13"
+        runs-on: "macos-latest"
         timeout-minutes: 1
         steps:
         -
@@ -30,6 +30,7 @@ jobs:
             uses: "actions/checkout@v3.6.0"
         -
             name: "xcode"
+            # macos-13 -> macosx13.3
             run: |
                 xcodebuild -showsdks; echo ___
                 xcrun --show-sdk-version; echo ___
