@@ -23,7 +23,7 @@ jobs:
     typos_check:
         name: "文A Typos"
         runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
+        timeout-minutes: 10
         steps:
         -
             name: "Checkout repository"
