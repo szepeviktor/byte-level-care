@@ -1,4 +1,4 @@
-FROM debian:12.4-slim
+FROM rust:bookworm as rustdeps
 
 LABEL org.opencontainers.image.title="Byte-level care"
 LABEL org.opencontainers.image.description="A robust web application"
@@ -19,3 +19,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -e -x \
     && ls -l -A
+
+RUN cargo install typos-cli
+
+RUN find / -name "typos*"
