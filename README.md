@@ -143,7 +143,7 @@ How to design and implement continuous delivery.
 [href-composer-file]: https://github.com/szepeviktor/byte-level-care/blob/master/composer.json
 [href-coveralls]: https://coveralls.io/github/szepeviktor/byte-level-care?branch=master
 [href-gha-back-end]: https://github.com/szepeviktor/byte-level-care/actions/workflows/back-end.yml
-[href-gitlab-manual-actions]: https://gitlab.com/help/ci/yaml/README.md#manual-actions
+[href-gitlab-manual-actions]: https://docs.gitlab.com/ee/ci/environments/#configure-manual-deployments
 [href-infrastructure]: https://github.com/szepeviktor/infrastructure-for-hosting-web-applications
 [href-laravel-isdown]: https://github.com/szepeviktor/running-laravel/blob/master/app/Console/Commands/IsDownForMaintenanceCommand.php
 [href-license-file]: https://github.com/szepeviktor/byte-level-care/blob/master/LICENSE
