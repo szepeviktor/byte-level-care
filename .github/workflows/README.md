@@ -29,8 +29,6 @@ jobs:
 - Back-end / 3️⃣ Static Analysis
 - Back-end / 4️⃣ Coding Standards
 - Dockerfile / 🐳 Hadolint
-- Docs / Markdown format
-- Docs / Links
 - Front-end / 𝟏 JavaScript Syntax Errors
 - Front-end / 𝟐 JavaScript Coding Standards
 - Front-end / 𝟑 Sassy CSS Coding Standards
@@ -39,6 +37,8 @@ jobs:
 - Git commits / Commit author
 - Git tags / Tag without new commit
 - Integrity / Integrity
+- Markdown / Markdown format
+- Markdown / Links
 - Outdated packages / PHP packages
 - Outdated packages / Node.js packages
 - Outdated packages / AlDanial/cloc
