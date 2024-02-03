@@ -160,7 +160,7 @@ jobs:
                 dependency-versions: "highest"
         -
             name: "Check PSR-4 mapping 🐌"
-            run: "composer dump-autoload --optimize --strict-psr"
+            run: "composer dump-autoload --dev --optimize --strict-psr"
         -
             name: "Check for security vulnerability advisories"
             run: "composer audit"
