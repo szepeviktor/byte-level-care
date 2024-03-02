@@ -38,6 +38,9 @@ concurrency:
     group: "${{ github.workflow }}-${{ github.ref }}"
     cancel-in-progress: true
 
+env:
+    NPM_CONFIG_FUND: "false"
+
 jobs:
     js_syntax_errors:
         name: "𝟏 JavaScript Syntax Errors"
