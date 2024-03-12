@@ -28,7 +28,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.2"
         -
             name: "Set up PHP"
             uses: "shivammathur/setup-php@2.30.0"
@@ -51,7 +51,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.2"
         -
             name: "Set up Node.js"
             uses: "actions/setup-node@v4.0.1"
@@ -81,7 +81,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.2"
         -
             name: "Show available updates"
             env:
