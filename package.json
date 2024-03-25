@@ -12,8 +12,8 @@
     "dependencies": {
         "acorn": "^8.11.3",
         "eslint": "^8.57.0",
-        "stylelint": "^15.10.3",
-        "stylelint-config-sass-guidelines": "^10.0.0"
+        "stylelint": "^16.3.0",
+        "stylelint-config-sass-guidelines": "^11.1.0"
     },
     "scripts": {
         "prod:build": "echo 'The build process'",
