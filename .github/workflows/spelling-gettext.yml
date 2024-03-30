@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Translations spelling"
+
+on:
+    workflow_dispatch: null
+
+jobs:
+    hunspell_check:
+        name: "Hunspell"
+        runs-on: "ubuntu-latest"
+        timeout-minutes: 5
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v4"
+        -
+            name: "Install Hunspell"
+            run: "sudo -- apt-get install -y hunspell"
+        -
+            name: "Checkout dictionaries"
+            #run: "git clone --depth=1 https://anongit.freedesktop.org/git/libreoffice/dictionaries.git dictionaries"
+            uses: "actions/checkout@v4"
+            with:
+                repository: "LibreOffice/dictionaries"
+                path: "dictionaries"
+        -
+            name: "Search for misspellings"
+            run: |
+                MISSPELLED_WORDS="$(
+                    sed -n -e 's#^msgstr "\(.\+\)"$#\1#p' languages/*hu_HU.po \
+                        | hunspell -d ./dictionaries/hu_HU/hu_HU -p hunspell.txt -l
+                )"
+                echo "${MISSPELLED_WORDS}"
+                test -z "${MISSPELLED_WORDS}"
