@@ -122,7 +122,7 @@ How to design and implement continuous delivery.
 -   Populate caches (application, OPcache, `wp rewrite flush`)
 -   Run at least 1 basic functional or unit test (e.g. log in or display dashboard)
 -   Check HTML output
--   Special sudo configuration for reloading PHP-FPM or Cachetool
+-   Special sudo configuration for reloading PHP FPM or Cachetool
 -   **Alert on failure**
 -   "Was down for X seconds"
 -   Send email, Slack, Trello or Google Hangouts notification
