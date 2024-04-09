@@ -29,7 +29,7 @@ jobs:
             uses: "actions/checkout@v4"
         -
             name: "Install Hunspell"
-            run: "sudo -- apt-get install -y hunspell"
+            run: "sudo -- apt-get install -y hunspell gettext"
         -
             name: "Checkout dictionaries"
             #run: "git clone --depth=1 https://anongit.freedesktop.org/git/libreoffice/dictionaries.git dictionaries"
@@ -41,7 +41,8 @@ jobs:
             name: "Search for misspellings"
             run: |
                 MISSPELLED_WORDS="$(
-                    sed -n -e 's#^msgstr "\(.\+\)"$#\1#p' languages/*hu_HU.po \
+                    msgcat --no-wrap languages/*hu_HU.po \
+                        | sed -n -e 's#^msgstr "\(.\+\)"$#\1#p' \
                         | hunspell -d ./libreoffice-dictionaries/hu_HU/hu_HU -p hunspell.txt -l
                 )"
                 echo "${MISSPELLED_WORDS}"
