@@ -108,10 +108,10 @@ jobs:
             continue-on-error: true
         -
             name: "Annotate ESLint Results"
-            uses: "ataylorme/eslint-annotate-action@2.2.0"
+            uses: "ataylorme/eslint-annotate-action@3.0.0"
             with:
                 check-name: "𝕩 ESLint Annotations"
-                repo-token: "${{ github.token }}"
+                GITHUB_TOKEN: "${{ github.token }}"
                 report-json: "${{ runner.temp }}/eslint-report.json"
 
     scss_coding_standards:
