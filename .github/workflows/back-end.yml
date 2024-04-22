@@ -33,7 +33,7 @@ jobs:
                 tools: "parallel-lint"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.3"
         -
             name: "Search for invalid complex curly syntax 🐌"
             run: |
@@ -82,7 +82,7 @@ jobs:
                 echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.3"
         -
             name: "Install dependencies"
             uses: "ramsey/composer-install@2.3.0"
@@ -143,7 +143,7 @@ jobs:
                 coverage: "none"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.3"
         -
             name: "Check JSON files"
             run: |
@@ -196,7 +196,7 @@ jobs:
                 tools: "phpcs,cs2pr"
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.1"
+            uses: "actions/checkout@v4.1.3"
         -
             name: "Install dependencies"
             uses: "ramsey/composer-install@2.3.0"
