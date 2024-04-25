@@ -54,7 +54,7 @@ jobs:
             uses: "actions/checkout@v4.1.1"
         -
             name: "Run Lychee"
-            uses: "lycheeverse/lychee-action@v1.9.3"
+            uses: "lycheeverse/lychee-action@v1.10.0"
             with:
                 output: "${{ runner.temp }}/lychee/out.md"
                 fail: true
