@@ -10,7 +10,7 @@
         "https://github.com/npm/cli/blob/latest/package.json"
     ],
     "dependencies": {
-        "acorn": "^8.12.0",
+        "acorn": "^8.12.1",
         "eslint": "^9.5.0",
         "stylelint": "^16.3.0",
         "stylelint-config-sass-guidelines": "^11.1.0"
