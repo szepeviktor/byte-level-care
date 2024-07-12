@@ -1,6 +1,6 @@
 {
     "extends": "stylelint-config-sass-guidelines",
     "rules": {
-        "indentation": 4
+        "@stylistic/indentation": 4
     }
 }
