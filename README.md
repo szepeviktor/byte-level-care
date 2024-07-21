@@ -6,7 +6,7 @@
 > [!NOTE]
 > Currently there are 14 _GitHub Actions_
 > [workflows](.github/workflows)
-> in the repository.
+> in this repository.
 
 How to live with zero problems through Total Control.
 
