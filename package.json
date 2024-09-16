@@ -13,7 +13,7 @@
         "acorn": "^8.12.0",
         "eslint": "^9.5.0",
         "stylelint": "^16.3.0",
-        "stylelint-config-sass-guidelines": "^12.0.0"
+        "stylelint-config-sass-guidelines": "^12.1.0"
     },
     "scripts": {
         "prod:build": "echo 'The build process'",
