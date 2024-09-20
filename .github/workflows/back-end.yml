@@ -174,7 +174,7 @@ jobs:
                 ! git grep --line-number -e '\$this\s*->\s*\$this\|\$\$this' -- ':!:*/back-end.yml'
         -
             name: "Perform static analysis"
-            run: "composer exec -- phpstan analyze --level=5 src/"
+            run: "composer exec -- phpstan analyze -v --level=5 src/"
             # @TODO Cognitive Complexity tomasvotruba/cognitive-complexity
             # Mess Detector phpmd/phpmd
             # Magic Number Detector povils/phpmnd
