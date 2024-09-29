@@ -131,7 +131,8 @@ jobs:
                 # cache: "yarn"
         -
             name: "Setup problem matcher for Stylelint"
-            uses: "xt0rted/stylelint-problem-matcher@v1.3.0"
+            run: |
+                echo "::add-matcher::.github/stylelint-matcher.json"
         -
             name: "Enable strict engine checking"
             run: "npm config set engine-strict true"
