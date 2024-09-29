@@ -139,8 +139,8 @@ jobs:
             #run: "yarn install --non-interactive --pure-lockfile"
         -
             name: "Detect coding standards violations"
-            run: "npm run scss:cs -- --formatter github"
-            #run: "yarn run scss:cs --formatter github"
+            run: "npm run scss:cs -- --custom-formatter=stylelint-actions-formatters"
+            #run: "yarn run scss:cs --custom-formatter=stylelint-actions-formatters"
 
     svg:
         name: "𝟒 SVG validity"
