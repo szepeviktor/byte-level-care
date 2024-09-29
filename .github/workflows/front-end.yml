@@ -130,6 +130,9 @@ jobs:
                 cache: "npm"
                 # cache: "yarn"
         -
+            name: "Setup problem matcher for Stylelint"
+            uses: "xt0rted/stylelint-problem-matcher@v1.3.0"
+        -
             name: "Enable strict engine checking"
             run: "npm config set engine-strict true"
             #run: "yarn config set engine-strict true"
@@ -139,8 +142,8 @@ jobs:
             #run: "yarn install --non-interactive --pure-lockfile"
         -
             name: "Detect coding standards violations"
-            run: "npm run scss:cs -- --custom-formatter=stylelint-actions-formatters"
-            #run: "yarn run scss:cs --custom-formatter=stylelint-actions-formatters"
+            run: "npm run scss:cs"
+            #run: "yarn run scss:cs"
 
     svg:
         name: "𝟒 SVG validity"
