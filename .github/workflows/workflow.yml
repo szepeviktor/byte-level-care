@@ -71,6 +71,10 @@ jobs:
             name: "Checkout repository"
             uses: "actions/checkout@v4.1.5"
         -
+            name: "Set up problem matcher"
+            run: |
+                echo "::add-matcher::.github/actionlint-matcher.json"
+        -
             name: "Analyze workflow files"
             uses: "docker://rhysd/actionlint:1.7.3"
             with:
