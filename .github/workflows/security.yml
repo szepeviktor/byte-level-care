@@ -31,4 +31,4 @@ jobs:
         -
             name: "Scan with semgrep"
             run: |
-              semgrep scan --config auto --error --metric=off
+                semgrep scan --config auto --error #--metric=off
