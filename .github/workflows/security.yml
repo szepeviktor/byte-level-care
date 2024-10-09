@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
     semgrep:
-        name: "semgrep-oss/scan"
+        name: "Semgrep"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
         container:
@@ -31,4 +31,4 @@ jobs:
         -
             name: "Scan with semgrep"
             run: |
-                semgrep scan --config auto --error #--metric=off
+                semgrep scan --verbose --config auto --error #--metric=off
