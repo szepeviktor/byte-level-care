@@ -1,0 +1,34 @@
+name: "Security"
+
+on:  # yamllint disable-line rule:truthy
+    pull_request: null
+    push:
+        branches:
+        - "master"
+    workflow_call: null
+
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read" # Private repositories need read permission
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    semgrep:
+        name: "semgrep-oss/scan"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        container:
+            image: "semgrep/semgrep"
+        if: "${{ github.actor != 'dependabot[bot]' }}"
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v4.1.5"
+        -
+            name: "Scan with semgrep"
+            run: |
+              semgrep scan --config auto --error --metric=off
