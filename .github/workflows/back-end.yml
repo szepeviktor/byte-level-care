@@ -25,6 +25,8 @@ jobs:
         timeout-minutes: 5
         steps:
         -
-            run: "echo $PATH"
+            run: |
+                echo -e "#!/bin/bash\necho alma" > .local/bin/alma
+                chmod +x .local/bin/alma
         -
-            run: "mkdir bin; echo $PATH"
+            run: alma
