@@ -122,7 +122,7 @@ jobs:
             env:
                 COVERALLS_REPO_TOKEN: "${{ github.token }}"
             if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
-            uses: "coverallsapp/github-action@v2.3.0"
+            uses: "coverallsapp/github-action@v2.3.2"
             with:
                 github-token: "${{ env.COVERALLS_REPO_TOKEN }}"
                 flag-name: "Unit"
