@@ -37,7 +37,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.5"
+            uses: "actions/checkout@v4.2.2"
         -
             name: "Check Markdown formatting"
             uses: "DavidAnson/markdownlint-cli2-action@v17.0.0"
@@ -51,7 +51,7 @@ jobs:
         steps:
         -
             name: "Checkout repository"
-            uses: "actions/checkout@v4.1.5"
+            uses: "actions/checkout@v4.2.2"
         -
             name: "Run Lychee"
             uses: "lycheeverse/lychee-action@v2.0.0"
