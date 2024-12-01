@@ -104,6 +104,7 @@ jobs:
                 composer exec -- phpcbf --standard=vendor/slevomat/coding-standard/SlevomatCodingStandard \
                     --sniffs=SlevomatCodingStandard.TypeHints.DeclareStrictTypes src/ \
                     || test "$?" = 1 && exit 0
+                git diff
         -
             name: "Execute unit tests"
             #run: "composer exec -- phpunit"
