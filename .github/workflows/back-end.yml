@@ -99,7 +99,7 @@ jobs:
             run: |
                 echo "::group::Install slevomat/coding-standard"
                 composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer false
-                composer require --no-scripts --dev slevomat/coding-standard
+                composer require --no-scripts --dev --with-all-dependencies slevomat/coding-standard
                 echo "::endgroup::"
                 composer exec -- phpcbf --standard=vendor/slevomat/coding-standard/SlevomatCodingStandard \
                     --sniffs=SlevomatCodingStandard.TypeHints.DeclareStrictTypes src/ \
