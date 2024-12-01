@@ -17,7 +17,7 @@
     },
     "scripts": {
         "prod:build": "echo 'The build process'",
-        "scss:cs": "npx stylelint resources/sass/*.scss",
-        "js:eslint": "npx eslint resources/js/*.js"
+        "scss:cs": "stylelint resources/sass/*.scss",
+        "js:eslint": "eslint resources/js/*.js"
     }
 }
