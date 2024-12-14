@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "HTML"
+
+on:
+    pull_request: null
+    push:
+        branches:
+        - "master"
+
+permissions:
+    contents: "read"
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    typos_check:
+        name: "Validator"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v4.1.5"
+        -
+            name: "Setup Java"
+            uses: "actions/setup-java@v4.5.0"
+            with:
+                distribution: "temurin"
+                java-version: "21"
+        -
+            name: "Set up Node.js"
+            uses: "actions/setup-node@v4.1.0"
+            with:
+                node-version: "22"
+                check-latest: true
+                cache: "npm"
+        -
+            name: "Install The Nu Html Checker"
+            env:
+                GH_TOKEN: "${{ github.token }}"
+            run: |
+                set -o pipefail
+                mkdir -p "${{ runner.temp }}/validator"
+                RELEASE_ASSET_URL="$(
+                    gh api /repos/validator/validator/releases/latest \
+                        --jq '."assets"[] | select(."name" | test("^vnu\\.jar_.+\\.zip$")) | ."browser_download_url"'
+                )"
+                wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
+                    --quiet --output-document="${{ runner.temp }}/validator/vnu.zip" "${RELEASE_ASSET_URL}"
+                unzip -j -d "${{ runner.temp }}/validator" "${{ runner.temp }}/validator/vnu.zip" dist/vnu.jar
+                java -jar "${{ runner.temp }}/validator/vnu.jar" --version
+        -
+            name: "Install production dependencies"
+            run: "npm ci --omit=dev"
+        -
+            name: "Build website"
+            run: "npm run eleventy:build"
+        -
+            name: "Run validator"
+            run: |
+                java -jar "${{ runner.temp }}/validator/vnu.jar" dist/index.html
