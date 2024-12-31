@@ -19,7 +19,7 @@
         "composer-plugin-api": "^2.2"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan": "^2.1",
         "pestphp/pest": "^3.0"
     },
     "autoload": {
