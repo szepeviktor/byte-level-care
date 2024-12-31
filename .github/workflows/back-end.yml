@@ -26,7 +26,7 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@2.30.0"
+            uses: "shivammathur/setup-php@2.32.0"
             with:
                 php-version: "8.2"
                 coverage: "none"
@@ -76,7 +76,7 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@2.30.0"
+            uses: "shivammathur/setup-php@2.32.0"
             with:
                 php-version: "${{ matrix.php-version }}"
         -
@@ -140,7 +140,7 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@2.30.0"
+            uses: "shivammathur/setup-php@2.32.0"
             with:
                 php-version: "8.2"
                 coverage: "none"
@@ -192,7 +192,7 @@ jobs:
         steps:
         -
             name: "Set up PHP"
-            uses: "shivammathur/setup-php@2.30.0"
+            uses: "shivammathur/setup-php@2.32.0"
             with:
                 php-version: "8.2"
                 coverage: "none"
