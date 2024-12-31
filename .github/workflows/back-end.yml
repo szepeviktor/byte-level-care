@@ -60,6 +60,8 @@ jobs:
         #services:
         #    database:
         #        image: "mariadb:11.0.2"
+        #        ports:
+        #        - "3306/tcp"
         #        env:
         #            MYSQL_DATABASE: "cylinder"
         #            MYSQL_USER: "dba"
@@ -70,6 +72,7 @@ jobs:
         #            --health-interval 1s
         #            --health-timeout 10s
         #            --health-retries 30
+        ## TCP connection: 127.0.0.1:${{ job.services.database.ports['3306'] }}
         steps:
         -
             name: "Set up PHP"
