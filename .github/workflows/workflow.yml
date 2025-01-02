@@ -75,3 +75,15 @@ jobs:
             uses: "docker://rhysd/actionlint:1.7.3"
             with:
                 args: "-color -verbose -shellcheck="
+
+    github_actions_validator:
+        name: "GitHub Actions Validator"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 1
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v4.1.5"
+        -
+            name: "Validate actions"
+            uses: "lumapps/github-actions-validator@v2"
