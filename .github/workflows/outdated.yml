@@ -89,8 +89,8 @@ jobs:
             run: |
                 CURRENT_VERSION="$(
                     cat .github/workflows/reusable-integrity.yml \
-                        | yq -r '."jobs".*."steps"[] | select(."run" | contains("gh api /repos")) | ."run"' \
-                        | sed -n -e 's/^\s*# \(v\S\+\)$/\1/p'
+                        | yq -r '."jobs".*."steps"[] | select(."run" | contains("gh release download")) | ."run"' \
+                        | sed -n -e 's/^\s*gh release download --repo AlDanial/cloc \(.\+\) --pattern .+$/\1/p'
                 )"
                 LATEST_VERSION="$(gh api /repos/AlDanial/cloc/releases/latest --jq '."tag_name"')"
                 echo "LATEST=${LATEST_VERSION}"
