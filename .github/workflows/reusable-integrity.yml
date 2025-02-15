@@ -133,11 +133,11 @@ jobs:
                 GH_TOKEN: "${{ github.token }}"
             run: |
                 mkdir -p "${{ runner.temp }}/cloc"
-                gh release download --repo AlDanial/cloc v2.02 --pattern "cloc-*.pl" \
+                gh release download --repo AlDanial/cloc v2.04 --pattern "cloc-*.pl" \
                     --output "${{ runner.temp }}/cloc/cloc"
+                git ls-files --cached -- ':!:LICENSE' ':!:yarn.lock' ':!:package-lock.json' \
+                    >"${{ runner.temp }}/cloc/include-list"
                 {
-                    git ls-files --cached -- ':!:LICENSE' ':!:yarn.lock' ':!:package-lock.json' \
-                        >"${{ runner.temp }}/cloc/include-list"
                     echo '```'
                     perl "${{ runner.temp }}/cloc/cloc" --hide-rate \
                         --list-file="${{ runner.temp }}/cloc/include-list" \
