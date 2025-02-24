@@ -3,7 +3,7 @@
 name: "Front-end"
 
 # ECMAScript version: ES5 (2009), ES6 (2015), ECMAScript 2016, 2017, 2018 ...
-# Node.js version: 18.12
+# Node.js version: 22.14
 # npm version: 9.2
 #
 # https://github.com/tc39/proposals/blob/main/finished-proposals.md
@@ -14,9 +14,9 @@ name: "Front-end"
 # Set engine versions in package.json
 # {
 #     "engines": {
-#         "node": "^18.12",
+#         "node": "^22.14",
 #         "npm": "please-use-yarn",
-#         "yarn": "^1.22.19"
+#         "yarn": "^1.22.22"
 #     }
 # }
 
@@ -54,7 +54,7 @@ jobs:
             name: "Set up Node.js"
             uses: "actions/setup-node@v4.0.1"
             with:
-                node-version: "18"
+                node-version: "22"
                 check-latest: true
                 cache: "npm"
                 # cache: "yarn"
@@ -90,7 +90,7 @@ jobs:
             name: "Set up Node.js"
             uses: "actions/setup-node@v4.0.1"
             with:
-                node-version: "18"
+                node-version: "22"
                 cache: "npm"
                 # cache: "yarn"
         -
@@ -126,7 +126,7 @@ jobs:
             name: "Set up Node.js"
             uses: "actions/setup-node@v4.0.1"
             with:
-                node-version: "18"
+                node-version: "22"
                 cache: "npm"
                 # cache: "yarn"
         -
@@ -176,7 +176,7 @@ jobs:
             name: "Set up Node.js"
             uses: "actions/setup-node@v4.0.1"
             with:
-                node-version: "18"
+                node-version: "22"
                 cache: "npm"
                 # cache: "yarn"
         -
