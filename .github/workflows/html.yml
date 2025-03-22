@@ -44,12 +44,8 @@ jobs:
             run: |
                 set -o pipefail
                 mkdir -p "${{ runner.temp }}/validator"
-                RELEASE_ASSET_URL="$(
-                    gh api /repos/validator/validator/releases/latest \
-                        --jq '."assets"[] | select(."name" | test("^vnu\\.jar_.+\\.zip$")) | ."browser_download_url"'
-                )"
-                wget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \
-                    --quiet --output-document="${{ runner.temp }}/validator/vnu.zip" "${RELEASE_ASSET_URL}"
+                gh release download --repo validator/validator --pattern "vnu.jar_*.zip" \
+                    --output "${{ runner.temp }}/validator/vnu.zip"
                 unzip -j -d "${{ runner.temp }}/validator" "${{ runner.temp }}/validator/vnu.zip" dist/vnu.jar
                 java -jar "${{ runner.temp }}/validator/vnu.jar" --version
         -
