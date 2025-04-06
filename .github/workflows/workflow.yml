@@ -32,7 +32,7 @@ jobs:
                     tested: "6.6"
                     requires_php: "8.0"
                     autoupdate: true
-        name: "Job name!"
+        name: "Job name! ${{ matrix.slug }}"
         runs-on: "ubuntu-24.04"
         timeout-minutes: 1
         steps:
