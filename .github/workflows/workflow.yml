@@ -19,59 +19,26 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    job_count:
-        name: "Job count"
-        runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
-        steps:
-        -
-            name: "Checkout repository"
-            uses: "actions/checkout@v4.1.5"
-        -
-            name: "Display total job count"
-            run: |
-                Job_count() {
-                    git ls-files --cached -z -- '.github/workflows/*.yml' \
-                        | xargs --null --max-args=1 -- yq '."jobs" | keys | length' \
-                        | paste --serial --delimiters="+" \
-                        | bc
-                }
-                printf ':construction_worker: Total number of jobs: %d' \
-                    "$(Job_count)" \
-                    >>"${GITHUB_STEP_SUMMARY}"
-
     run_context:
-        name: "Run context"
-        runs-on: "ubuntu-22.04"
+        strategy:
+            matrix:
+                include:
+                -
+                    id: "https://mcp-wp.github.io/mcp-server/update.json"
+                    slug: "mcp"
+                    version: "0.1.$CURRENT_DATE-${GITHUB_SHA::7}"
+                    url: "https://github.com/mcp-wp/mcp-server"
+                    package: "https://mcp-wp.github.io/mcp-server/nightly.zip"
+                    tested: "6.6"
+                    requires_php: "8.0"
+                    autoupdate: true
+        name: "Job name!"
+        runs-on: "ubuntu-24.04"
         timeout-minutes: 1
         steps:
         -
             name: "Dump information about the workflow run"
             run: |
-                printf 'github = '
-                jq --indent 4 --raw-output --color-output '.' <<"GITHUB__CONTEXT"
-                ${{ toJSON(github) }}
-                GITHUB__CONTEXT
-        -
-            name: "Dump information in dot notation"
-            run: |
-                printf 'github = '
-                jq --indent 4 --raw-output --color-output \
-                    '[paths(scalars) as $p | {"key":$p | join("."), "value":getpath($p)}] | from_entries' \
-                    <<"GITHUB__CONTEXT"
-                ${{ toJSON(github) }}
-                GITHUB__CONTEXT
-
-    actionlint:
-        name: "Actionlint"
-        runs-on: "ubuntu-22.04"
-        timeout-minutes: 1
-        steps:
-        -
-            name: "Checkout repository"
-            uses: "actions/checkout@v4.1.5"
-        -
-            name: "Analyze workflow files"
-            uses: "docker://rhysd/actionlint:1.7.3"
-            with:
-                args: "-color -verbose -shellcheck="
+                cat <<"GITHUB__MATRIX"
+                ${{ toJSON(matrix) }}
+                GITHUB__MATRIX
