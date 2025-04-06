@@ -20,25 +20,22 @@ concurrency:
 
 jobs:
     run_context:
-        strategy:
-            matrix:
-                include:
-                -
-                    id: "https://mcp-wp.github.io/mcp-server/update.json"
-                    slug: "mcp"
-                    version: "0.1.$CURRENT_DATE-${GITHUB_SHA::7}"
-                    url: "https://github.com/mcp-wp/mcp-server"
-                    package: "https://mcp-wp.github.io/mcp-server/nightly.zip"
-                    tested: "6.6"
-                    requires_php: "8.0"
-                    autoupdate: true
-        name: "Job name! ${{ matrix.slug }}"
+        name: "Job name!"
         runs-on: "ubuntu-24.04"
         timeout-minutes: 1
         steps:
         -
             name: "Dump information about the workflow run"
+            env:
+                id: "https://mcp-wp.github.io/mcp-server/update.json"
+                slug: "mcp"
+                version: "0.1.$CURRENT_DATE-${GITHUB_SHA::7}"
+                url: "https://github.com/mcp-wp/mcp-server"
+                package: "https://mcp-wp.github.io/mcp-server/nightly.zip"
+                tested: "6.6"
+                requires_php: "8.0"
+                autoupdate: true
             run: |
                 cat <<"GITHUB__MATRIX"
-                ${{ toJSON(matrix) }}
+                ${{ toJSON(env) }}
                 GITHUB__MATRIX
