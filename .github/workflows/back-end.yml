@@ -58,8 +58,6 @@ jobs:
                 dependencies:
                 - "lowest"
                 - "highest"
-                coverage:
-                - false
                 include:
                 -
                     php-version: "8.2"
