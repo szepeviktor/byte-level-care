@@ -58,6 +58,13 @@ jobs:
                 dependencies:
                 - "lowest"
                 - "highest"
+                coverage:
+                - false
+                include:
+                -
+                    php-version: "8.2"
+                    dependencies: "highest"
+                    coverage: true
         runs-on: "ubuntu-22.04"
         timeout-minutes: 5
         #services:
@@ -127,7 +134,7 @@ jobs:
             name: "Send coverage to Coveralls"
             env:
                 COVERALLS_REPO_TOKEN: "${{ github.token }}"
-            if: "${{ env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.dependencies == 'highest' }}"
+            if: "${{ env.COVERALLS_REPO_TOKEN && matrix.coverage }}"
             uses: "coverallsapp/github-action@v2.3.6"
             with:
                 github-token: "${{ env.COVERALLS_REPO_TOKEN }}"
