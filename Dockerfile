@@ -1,4 +1,4 @@
-FROM debian:12.11-slim
+FROM debian:13.0-slim
 
 LABEL org.opencontainers.image.title="Byte-level care"
 LABEL org.opencontainers.image.description="A robust web application"
