@@ -184,6 +184,16 @@ jobs:
             run: |
                 ! git grep --line-number -e '\$this\s*->\s*\$this\|\$\$this' -- ':!:*/back-end.yml'
         -
+            name: "Check superglobals"
+            env:
+                superglobal_regexp: "GLOBALS|_SERVER|_GET|_POST|_FILES|_COOKIE|_SESSION|_REQUEST|_ENV"
+            run: |
+                diff superglobals.txt <(
+                    find src/ -type f -print0 \
+                        | xargs --null --max-args=1 -- sed --quiet --regexp-extended 's#.*\$(${{ env.superglobal_regexp }})\[([^]]+)\].*#\2#gp' \
+                        | sort --ignore-case --unique
+                )
+        -
             name: "Perform static analysis"
             run: "composer exec -- phpstan analyze -v --level=5 src/"
             # @TODO Cognitive Complexity tomasvotruba/cognitive-complexity
