@@ -24,6 +24,11 @@ final class Example
         return new self($value);
     }
 
+    public function getIp(): string
+    {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
     public function toString(): string
     {
         return $this->value;
