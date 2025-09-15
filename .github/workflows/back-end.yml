@@ -186,11 +186,12 @@ jobs:
         -
             name: "Check superglobals"
             env:
-                superglobal_regexp: "GLOBALS|_SERVER|_GET|_POST|_FILES|_COOKIE|_SESSION|_REQUEST|_ENV"
+                regexp: "GLOBALS|_SERVER|_GET|_POST|_FILES|_COOKIE|_SESSION|_REQUEST|_ENV"
             run: |
                 diff superglobals.txt <(
                     find src/ -type f -print0 \
-                        | xargs --null --max-args=1 -- sed --quiet --regexp-extended 's#.*\$(${{ env.superglobal_regexp }})\[([^]]+)\].*#\2#gp' \
+                        | xargs --null --max-args=1 -- \
+                            grep --perl-regexp --only-matching '\$(${{ env.regexp }})\[\K[^]]+(?=\])' \
                         | sort --ignore-case --unique
                 )
         -
