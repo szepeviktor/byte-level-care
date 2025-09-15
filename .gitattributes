@@ -13,5 +13,6 @@
 /eslint.config.js export-ignore
 /package-lock.json export-ignore linguist-generated
 /phpunit.xml export-ignore
+/superglobals.txt export-ignore
 /yarn.lock export-ignore linguist-generated
 /tests/ export-ignore
