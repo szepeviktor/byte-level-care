@@ -123,7 +123,7 @@ jobs:
         -
             name: "Tests have failed: upload logs"
             if: "${{ failure() }}"
-            uses: "actions/upload-artifact@v4.6.2"
+            uses: "actions/upload-artifact@v5.0.0"
             with:
                 path: "storage/logs/"
                 # Prefix with project name (github.repository contains a slash)
