@@ -67,6 +67,11 @@ jobs:
             run: "npm ci"
             #run: "yarn install --non-interactive --pure-lockfile"
         -
+            name: "Display log on failure"
+            if: "${{ failure() }}"
+            run: |
+                cat $(npm config get cache)/_logs/*
+        -
             name: "Check JavaScript files for syntax errors"
             run: |
                 git ls-files --cached -z -- 'resources/js/*.js' \
