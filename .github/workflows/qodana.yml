@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Qodana"
+
+on:  # yamllint disable-line rule:truthy
+    pull_request: null
+    push:
+        branches:
+        - "master"
+
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read" # Private repositories need read permission
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    qodana:
+        name: "Qodana Cloud"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 10
+        permissions:
+            checks: "write"
+            contents: "write"
+            pull-requests: "write"
+        steps:
+        -
+            name: "Set up PHP"
+            uses: "shivammathur/setup-php@2.27.0"
+            with:
+                php-version: "8.2"
+                coverage: "none"
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@v3.6.0"
+            with:
+                # Check out the pull request commit, not the merge commit
+                ref: "${{ github.event.pull_request.head.sha }}"
+                fetch-depth: 0
+        -
+            name: "Install dependencies"
+            uses: "ramsey/composer-install@2.2.0"
+            with:
+                dependency-versions: "highest"
+        -
+            name: "Run analysis"
+            uses: "JetBrains/qodana-action@v2023.2"
+            env:
+                QODANA_TOKEN: "${{ secrets.QODANA_TOKEN }}"
