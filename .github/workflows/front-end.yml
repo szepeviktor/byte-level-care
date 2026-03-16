@@ -108,7 +108,7 @@ jobs:
             continue-on-error: true
         -
             name: "Annotate ESLint Results"
-            uses: "ataylorme/eslint-annotate-action@3.0.0"
+            uses: "ataylorme/eslint-annotate-action@v4"
             with:
                 check-name: "𝕩 ESLint Annotations"
                 GITHUB_TOKEN: "${{ github.token }}"
