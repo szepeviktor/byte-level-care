@@ -14,7 +14,7 @@
         "eslint": "^10.0.0",
         "stylelint": "^17.1.1",
         "stylelint-config-standard-scss": "^17.0.0",
-        "@stylistic/stylelint-config": "^4.0.0"
+        "@stylistic/stylelint-config": "^5.0.0"
     },
     "scripts": {
         "prod:build": "echo 'The build process'",
