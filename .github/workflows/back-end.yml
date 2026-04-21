@@ -87,6 +87,7 @@ jobs:
             uses: "shivammathur/setup-php@2.35.3"
             with:
                 php-version: "${{ matrix.php-version }}"
+                tools: composer-dependency-analyser
         -
             name: "Setup problem matcher for PHPUnit"
             run: |
@@ -104,6 +105,9 @@ jobs:
             with:
                 dependency-versions: "${{ matrix.dependencies }}"
                 #composer-options: "--with=laravel/framework:${{ matrix.laravel-constraint }}"
+        -
+            name: composer-dependency-analyser
+            run: composer-dependency-analyser
         -
             name: "Declare strict types"
             if: "${{ matrix.dependencies == 'highest' }}"
