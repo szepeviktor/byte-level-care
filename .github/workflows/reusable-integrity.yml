@@ -123,6 +123,8 @@ jobs:
         name: "Lines of Code"
         runs-on: "ubuntu-22.04"
         timeout-minutes: 1
+        env:
+            CLOC_VERSION: "v2.10"
         steps:
         -
             name: "Checkout repository"
@@ -133,7 +135,7 @@ jobs:
                 GH_TOKEN: "${{ github.token }}"
             run: |
                 mkdir -p "${{ runner.temp }}/cloc"
-                gh release download --repo AlDanial/cloc v2.08 --pattern "cloc-*.pl" \
+                gh release download --repo AlDanial/cloc "${CLOC_VERSION}" --pattern "cloc-*.pl" \
                     --output "${{ runner.temp }}/cloc/cloc"
                 git ls-files --cached -- ':!:LICENSE' ':!:yarn.lock' ':!:package-lock.json' \
                     >"${{ runner.temp }}/cloc/include-list"
