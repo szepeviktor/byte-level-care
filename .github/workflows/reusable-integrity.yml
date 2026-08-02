@@ -26,6 +26,11 @@ on:  # yamllint disable-line rule:truthy
                 type: "string"
                 default: "LICENSE README.md composer.json src/"
                 required: false
+            multiple-spaces-excludes:
+                description: "Additional Git pathspecs excluded from the multiple-spaces check"
+                type: "string"
+                default: ""
+                required: false
 
 permissions: {}  # yamllint disable-line rule:braces
 #permissions: "read-all"
@@ -99,7 +104,8 @@ jobs:
                 # Exclude comment lines and docblocks
                 ! git grep --perl-regexp --line-number -I \
                     -e '\S\s\s' --and --not -e '^(#|//)' --and --not -e '    \* @' \
-                    -- ':!:*.lock' ':!:*.md' ':!:.github/**.yml'
+                    -- ':!:*.lock' ':!:*.md' ':!:.github/**.yml' \
+                    ${{ inputs.multiple-spaces-excludes }}
         -
             # Move TODO-s into GitHub issues!
             name: "Search for TODO-s and FIXME-s 🐌"
