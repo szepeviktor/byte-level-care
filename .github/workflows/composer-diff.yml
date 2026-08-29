@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: "Composer diff"
+
+on:  # yamllint disable-line rule:truthy
+    pull_request:
+        paths:
+        - "composer.lock"
+    push:
+        branches:
+        - "master"
+        paths:
+        - "composer.lock"
+
+permissions: {}  # yamllint disable-line rule:braces
+#permissions: "read-all"
+#permissions:
+#    contents: "read" # Private repositories need read permission
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+jobs:
+    composer_diff:
+        name: "Composer diff"
+        runs-on: "ubuntu-22.04"
+        timeout-minutes: 5
+        steps:
+        -
+            name: "Checkout repository"
+            uses: "actions/checkout@4.1.5"
+            with:
+                fetch-depth: 0
+        -
+            name: "Generate Composer diff"
+            id: "composer_diff"
+            uses: "IonBazan/composer-diff-action@v1.0.6"
+        -
+            name: "Display Composer diff"
+            if: "${{ steps.composer_diff.outputs.composer_diff_exit_code != 0 }}"
+            run: |
+                cat <<"DIFF__OUTPUT" >>"${GITHUB_STEP_SUMMARY}"
+                ${{ steps.composer_diff.outputs.composer_diff }}
+                DIFF__OUTPUT
